@@ -11,14 +11,12 @@
             "id": "34dcf198caf3c24e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Verteilte Systeme/Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
-                "mode": "source",
-                "source": false
+                "file": "Verteilte Systeme/Bilder/vektor_uhr.jpg"
               },
-              "icon": "lucide-file",
-              "title": "Broadcast Algorithmen und kausale Ordnung von Nachrichten"
+              "icon": "lucide-image",
+              "title": "vektor_uhr"
             }
           }
         ]
@@ -185,16 +183,20 @@
   },
   "active": "34dcf198caf3c24e",
   "lastOpenFiles": [
+    "Verteilte Systeme/Bilder/microservice_referenzarchitektur.jpg",
+    "Verteilte Systeme/Bilder/lamport_uhr.jpg",
+    "Verteilte Systeme/Bilder/broadcast_hierarchie.jpg",
+    "Verteilte Systeme/Bilder/broadcast.jpg",
+    "Verteilte Systeme/1. Verteiltes System.md",
+    "Verteilte Systeme/7. Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
+    "Verteilte Systeme/Things to look at.md",
     "Verteilte Systeme/Bilder/vektor_uhr.jpg",
     "Verteilte Systeme/Bilder",
     "Verteilte Systeme/Unbenannt.md",
-    "Verteilte Systeme/Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
-    "Verteilte Systeme/Bilder/lamport_uhr.jpg",
     "Willkommen.md",
     "Unbenannt.canvas",
     "Neuer Link.md",
     "Verteilte Systeme/Klausurinhalte.md",
-    "Verteilte Systeme/Verteiltes System.md",
     "Glossar/Content Delivery Network.md",
     "Glossar/Untere Schranke & Obere Schranke.md",
     "Glossar",
