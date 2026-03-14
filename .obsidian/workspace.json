@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Verteilte Systeme/Verteiltes System.md",
+                "file": "Verteilte Systeme/Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Verteiltes System"
+              "title": "Broadcast Algorithmen und kausale Ordnung von Nachrichten"
             }
           }
         ]
@@ -185,20 +185,25 @@
   },
   "active": "34dcf198caf3c24e",
   "lastOpenFiles": [
+    "Verteilte Systeme/Bilder/vektor_uhr.jpg",
+    "Verteilte Systeme/Bilder",
+    "Verteilte Systeme/Unbenannt.md",
+    "Verteilte Systeme/Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
+    "Verteilte Systeme/Bilder/lamport_uhr.jpg",
+    "Willkommen.md",
+    "Unbenannt.canvas",
+    "Neuer Link.md",
     "Verteilte Systeme/Klausurinhalte.md",
     "Verteilte Systeme/Verteiltes System.md",
     "Glossar/Content Delivery Network.md",
     "Glossar/Untere Schranke & Obere Schranke.md",
     "Glossar",
     "2026-03-12.md",
-    "Unbenannt.canvas",
-    "Neuer Link.md",
     "Unbenannt.base",
     "Advanced Algorithms/Algos.md",
     "Verteilte Systeme",
     "2026-02-22.md",
     "Unbenannt/Unbenannt.canvas",
-    "Willkommen.md",
     "Advanced Algorithms"
   ]
 }

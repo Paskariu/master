@@ -1,9 +1,9 @@
-#Klausurrelevant
+#Klausurrelevant #TODO
 # Definition
 >Ein Verteiltes System ist eine Kollektion unabhängiger Computer, die den Benutzern als ein Einzelcomputer erscheinen.
 
 Ein Verteiltes System ist ein System in dem
-+ Hard- und Softwarekomponenten
++ Hard- und Softwarekomponenten    
 + die sich auf miteinander vernetzten Computern befinden
 + miteinander kommunizieren und ihre Aktionen koordinieren
 + indem sie Nachrichten austauschen
@@ -93,4 +93,5 @@ Ein Verteiltes System ist ein System in dem
 + Sicherheit
 + Skalierbarkeit
 + Zuverlässigkeit
-+ 
+
+SEITE 30
