@@ -11,12 +11,14 @@
             "id": "34dcf198caf3c24e",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Verteilte Systeme/Bilder/vektor_uhr.jpg"
+                "file": "Verteilte Systeme/3. RPC, Verteilte Objekte, Namensdienste.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "vektor_uhr"
+              "icon": "lucide-file",
+              "title": "3. RPC, Verteilte Objekte, Namensdienste"
             }
           }
         ]
@@ -183,28 +185,37 @@
   },
   "active": "34dcf198caf3c24e",
   "lastOpenFiles": [
+    "Verteilte Systeme/5. Komponenten-orientierte Middleware.md",
+    "Verteilte Systeme/1. Verteiltes System.md",
+    "Verteilte Systeme/7. Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
+    "Verteilte Systeme/2. Grundlegende Kommunikationsmechanismen.md",
+    "Verteilte Systeme/3. RPC, Verteilte Objekte, Namensdienste.md",
+    "Verteilte Systeme/4. Webservices.md",
+    "Verteilte Systeme/6. Microservices und Laufzeit-Ökosysteme.md",
+    "Verteilte Systeme/Klausurinhalte.md",
+    "Willkommen.md",
+    "Glossar/Untere Schranke & Obere Schranke.md",
+    "Glossar/Content Delivery Network.md",
+    "Glossar/Idempotent.md",
+    "Verteilte Systeme/Bilder/rpc_ablauf.jpg",
+    "Unbenannt.canvas",
+    "Neuer Link.md",
+    "Advanced Algorithms/Algos.md",
+    "2026-03-12.md",
+    "2026-02-22.md",
+    "Verteilte Systeme/Unbenannt.md",
+    "Verteilte Systeme/Bilder/udp.jpg",
+    "Verteilte Systeme/Bilder/tcp.jpg",
+    "Verteilte Systeme/Bilder/vektor_uhr.jpg",
     "Verteilte Systeme/Bilder/microservice_referenzarchitektur.jpg",
     "Verteilte Systeme/Bilder/lamport_uhr.jpg",
     "Verteilte Systeme/Bilder/broadcast_hierarchie.jpg",
     "Verteilte Systeme/Bilder/broadcast.jpg",
-    "Verteilte Systeme/1. Verteiltes System.md",
-    "Verteilte Systeme/7. Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
     "Verteilte Systeme/Things to look at.md",
-    "Verteilte Systeme/Bilder/vektor_uhr.jpg",
     "Verteilte Systeme/Bilder",
-    "Verteilte Systeme/Unbenannt.md",
-    "Willkommen.md",
-    "Unbenannt.canvas",
-    "Neuer Link.md",
-    "Verteilte Systeme/Klausurinhalte.md",
-    "Glossar/Content Delivery Network.md",
-    "Glossar/Untere Schranke & Obere Schranke.md",
     "Glossar",
-    "2026-03-12.md",
     "Unbenannt.base",
-    "Advanced Algorithms/Algos.md",
     "Verteilte Systeme",
-    "2026-02-22.md",
     "Unbenannt/Unbenannt.canvas",
     "Advanced Algorithms"
   ]
