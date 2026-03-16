@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Verteilte Systeme/7. Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
+                "file": "Verteilte Systeme/11. MOM.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "7. Broadcast Algorithmen und kausale Ordnung von Nachrichten"
+              "title": "11. MOM"
             }
           }
         ]
@@ -185,7 +185,11 @@
   },
   "active": "34dcf198caf3c24e",
   "lastOpenFiles": [
+    "Verteilte Systeme/10. Verteilte_Datenhaltung.md",
+    "Verteilte Systeme/9. Replikation_und_Konsistenz.md",
+    "Verteilte Systeme/8. Replikation_und_Konsens.md",
     "Verteilte Systeme/7. Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
+    "Verteilte Systeme/11. MOM.md",
     "Verteilte Systeme/3. RPC, Verteilte Objekte, Namensdienste.md",
     "Verteilte Systeme/2. Grundlegende Kommunikationsmechanismen.md",
     "mom.jpg",
