@@ -11,10 +11,14 @@
             "id": "34dcf198caf3c24e",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph-Ansicht"
+              "type": "markdown",
+              "state": {
+                "file": "Forschungsmethoden/Grundlagen.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Grundlagen"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 269.5
   },
   "right": {
     "id": "bd355f24bf554729",
@@ -181,21 +185,25 @@
   },
   "active": "34dcf198caf3c24e",
   "lastOpenFiles": [
-    "Unbenannt.canvas",
-    "Verteilte Systeme/11. MOM.md",
-    "Verteilte Systeme/10. Verteilte_Datenhaltung.md",
-    "Verteilte Systeme/9. Replikation_und_Konsistenz.md",
+    "Forschungsmethoden/Folien/DHBW_Forschung_2026_BegriffeUndGrundlagen.pdf",
+    "Forschungsmethoden/Grundlagen.md",
+    "Forschungsmethoden/Folien",
     "Verteilte Systeme/8. Replikation_und_Konsens.md",
+    "Forschungsmethoden",
+    "Verteilte Systeme/9. Replikation_und_Konsistenz.md",
+    "Verteilte Systeme/10. Verteilte_Datenhaltung.md",
+    "Willkommen.md",
+    "Unbenannt.canvas",
+    "Verteilte Systeme/Bilder/mom.jpg",
+    "Verteilte Systeme/1. Verteiltes System.md",
+    "Verteilte Systeme/11. MOM.md",
     "Verteilte Systeme/7. Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
     "Verteilte Systeme/3. RPC, Verteilte Objekte, Namensdienste.md",
     "Verteilte Systeme/2. Grundlegende Kommunikationsmechanismen.md",
-    "mom.jpg",
     "Verteilte Systeme/5. Komponenten-orientierte Middleware.md",
-    "Verteilte Systeme/1. Verteiltes System.md",
     "Verteilte Systeme/4. Webservices.md",
     "Verteilte Systeme/6. Microservices und Laufzeit-Ökosysteme.md",
     "Verteilte Systeme/Klausurinhalte.md",
-    "Willkommen.md",
     "Glossar/Untere Schranke & Obere Schranke.md",
     "Glossar/Content Delivery Network.md",
     "Glossar/Idempotent.md",
