@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Forschungsmethoden/Grundlagen.md",
-                "mode": "preview",
+                "file": "IT-Security/Notizen.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Grundlagen"
+              "title": "Notizen"
             }
           }
         ]
@@ -185,14 +185,19 @@
   },
   "active": "34dcf198caf3c24e",
   "lastOpenFiles": [
-    "Forschungsmethoden/Folien/DHBW_Forschung_2026_BegriffeUndGrundlagen.pdf",
+    "Forschungsmethoden/Notizen.md",
+    "IT-Security/Notizen.md",
+    "IT-Security",
     "Forschungsmethoden/Grundlagen.md",
+    "Markdown Cheatsheet.md",
+    "Willkommen.md",
+    "Forschungsmethoden/Firma.md",
+    "Forschungsmethoden/Folien/DHBW_Forschung_2026_BegriffeUndGrundlagen.pdf",
     "Forschungsmethoden/Folien",
     "Verteilte Systeme/8. Replikation_und_Konsens.md",
     "Forschungsmethoden",
     "Verteilte Systeme/9. Replikation_und_Konsistenz.md",
     "Verteilte Systeme/10. Verteilte_Datenhaltung.md",
-    "Willkommen.md",
     "Unbenannt.canvas",
     "Verteilte Systeme/Bilder/mom.jpg",
     "Verteilte Systeme/1. Verteiltes System.md",
@@ -220,7 +225,6 @@
     "Verteilte Systeme/Bilder/lamport_uhr.jpg",
     "Verteilte Systeme/Bilder/broadcast_hierarchie.jpg",
     "Verteilte Systeme/Bilder/broadcast.jpg",
-    "Verteilte Systeme/Things to look at.md",
     "Verteilte Systeme/Bilder",
     "Glossar",
     "Unbenannt.base",
