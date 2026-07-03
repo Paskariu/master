@@ -13,44 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IT-Security/Notizen.md",
+                "file": "IT-Security/Klausur/01_IT-Sicherheit_Einfuehrung_Zusammenfassung.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11. MOM"
-            }
-          },
-          {
-            "id": "f25ad26433a0fd1f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT-Sec/Unbenannt.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Unbenannt"
-            }
-          },
-          {
-            "id": "d0c08644efff4377",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT-Sec/enterprise_iam_keycloak_konzept.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "enterprise_iam_keycloak_konzept"
+              "title": "01_IT-Sicherheit_Einfuehrung_Zusammenfassung"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 486.5
   },
   "right": {
     "id": "bd355f24bf554729",
@@ -212,76 +183,57 @@
       "bases:Neue Base erstellen": false
     }
   },
-  "active": "d0c08644efff4377",
+  "active": "34dcf198caf3c24e",
   "lastOpenFiles": [
-    "IT-Sec/Promt.md",
-    "IT-Sec/Unbenannt.md",
     "IT-Sec/enterprise_iam_keycloak_konzept.md",
-    "IT-Sec/message(1) 2.txt",
-    "IT-Sec/message(1) 1.txt",
-    "IT-Sec/message(1).txt",
-    "Forschungsmethoden/Notizen.md",
+    "IT-Sec",
+    "IT-Security/Glossar",
     "IT-Security/Notizen.md",
-    "IT-Security",
-    "Forschungsmethoden/Grundlagen.md",
-    "Markdown Cheatsheet.md",
-    "Willkommen.md",
-    "Forschungsmethoden/Firma.md",
-    "Forschungsmethoden/Folien/DHBW_Forschung_2026_BegriffeUndGrundlagen.pdf",
-    "Forschungsmethoden/Folien",
-    "Verteilte Systeme/8. Replikation_und_Konsens.md",
-    "Forschungsmethoden",
-    "Verteilte Systeme/9. Replikation_und_Konsistenz.md",
-    "Verteilte Systeme/10. Verteilte_Datenhaltung.md",
-    "Unbenannt.canvas",
-    "Verteilte Systeme/Bilder/mom.jpg",
+    "IT-Security/Klausur/01_IT-Sicherheit_Einfuehrung_Zusammenfassung.md",
+    "IT-Security/Klausur/Bilder/zusammenspiel_threats.png",
+    "IT-Security/Klausur/Bilder",
+    "IT-Security/Klausur/Mögliche Fragen.md",
+    "IT-Security/Klausur/Grundlagen.md",
+    "IT-Security/Folien/0-einfuehrung_v13b.pdf",
+    "IT-Security/Folien/4_pki_v4f.pdf",
+    "IT-Security/Folien/5_software_v4g.pdf",
+    "IT-Security/Folien/wdh-krypto_v2.pdf",
+    "IT-Security/Folien/1-spezielle_bedrohungen_v6.pdf",
+    "IT-Security/Folien/2-webanwendungen_v11f.pdf",
+    "IT-Security/Folien/3_authentifikation_v9d.pdf",
     "Verteilte Systeme/1. Verteiltes System.md",
     "Verteilte Systeme/11. MOM.md",
-    "IT-Sec",
-    "Verteilte Systeme/PDFs/11. MOM.pdf",
     "Verteilte Systeme/10. Verteilte_Datenhaltung.md",
-    "Verteilte Systeme/PDFs/10. Verteilte_Datenhaltung.pdf",
     "Verteilte Systeme/9. Replikation_und_Konsistenz.md",
-    "Verteilte Systeme/PDFs/9. Replikation_und_Konsistenz.pdf",
     "Verteilte Systeme/8. Replikation_und_Konsens.md",
-    "Verteilte Systeme/PDFs/8. Replikation_und_Konsens.pdf",
     "Verteilte Systeme/7. Broadcast Algorithmen und kausale Ordnung von Nachrichten.md",
-    "Verteilte Systeme/PDFs/7. Broadcast Algorithmen und kausale Ordnung von Nachrichten.pdf",
     "Verteilte Systeme/6. Microservices und Laufzeit-Ökosysteme.md",
-    "Verteilte Systeme/PDFs/6. Microservices und Laufzeit-Ökosysteme.pdf",
     "Verteilte Systeme/5. Komponenten-orientierte Middleware.md",
     "Verteilte Systeme/4. Webservices.md",
     "Verteilte Systeme/3. RPC, Verteilte Objekte, Namensdienste.md",
     "Verteilte Systeme/2. Grundlegende Kommunikationsmechanismen.md",
-    "Verteilte Systeme/1. Verteiltes System.md",
+    "Advanced Algorithms/Algos.md",
+    "IT-Security/Präsi/Unbenannt.md",
+    "IT-Security/Präsi/Promt.md",
+    "IT-Security/Präsi/enterprise_iam_keycloak_konzept.md",
+    "Forschungsmethoden/Notizen.md",
+    "Forschungsmethoden/Grundlagen.md",
+    "Markdown Cheatsheet.md",
+    "Willkommen.md",
+    "Forschungsmethoden/Firma.md",
+    "Unbenannt.canvas",
+    "Verteilte Systeme/Bilder/mom.jpg",
     "Unbenannt.canvas",
     "mom.jpg",
     "Verteilte Systeme/Klausurinhalte.md",
-    "Willkommen.md",
-    "Glossar/Untere Schranke & Obere Schranke.md",
-    "Glossar/Content Delivery Network.md",
-    "Glossar/Idempotent.md",
     "Verteilte Systeme/Bilder/rpc_ablauf.jpg",
-    "Neuer Link.md",
-    "Advanced Algorithms/Algos.md",
-    "2026-03-12.md",
-    "2026-02-22.md",
-    "Verteilte Systeme/Unbenannt.md",
     "Verteilte Systeme/Bilder/udp.jpg",
     "Verteilte Systeme/Bilder/tcp.jpg",
     "Verteilte Systeme/Bilder/vektor_uhr.jpg",
     "Verteilte Systeme/Bilder/microservice_referenzarchitektur.jpg",
     "Verteilte Systeme/Bilder/lamport_uhr.jpg",
     "Verteilte Systeme/Bilder/broadcast_hierarchie.jpg",
-    "Verteilte Systeme/Bilder/broadcast.jpg",
-    "Verteilte Systeme/Things to look at.md",
     "Unbenannt/Unbenannt.canvas",
-    "Verteilte Systeme/Bilder",
-    "Glossar",
-    "Unbenannt.base",
-    "Verteilte Systeme",
-    "Unbenannt/Unbenannt.canvas",
-    "Advanced Algorithms"
+    "Unbenannt/Unbenannt.canvas"
   ]
 }
-
