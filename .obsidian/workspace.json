@@ -20,8 +20,37 @@
               "icon": "lucide-file",
               "title": "11. MOM"
             }
+          },
+          {
+            "id": "f25ad26433a0fd1f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IT-Sec/Unbenannt.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Unbenannt"
+            }
+          },
+          {
+            "id": "d0c08644efff4377",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IT-Sec/enterprise_iam_keycloak_konzept.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "enterprise_iam_keycloak_konzept"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -183,8 +212,16 @@
       "bases:Neue Base erstellen": false
     }
   },
-  "active": "34dcf198caf3c24e",
+  "active": "d0c08644efff4377",
   "lastOpenFiles": [
+    "IT-Sec/Promt.md",
+    "IT-Sec/Unbenannt.md",
+    "IT-Sec/enterprise_iam_keycloak_konzept.md",
+    "IT-Sec/message(1) 2.txt",
+    "IT-Sec/message(1) 1.txt",
+    "IT-Sec/message(1).txt",
+    "Verteilte Systeme/11. MOM.md",
+    "IT-Sec",
     "Verteilte Systeme/PDFs/11. MOM.pdf",
     "Verteilte Systeme/10. Verteilte_Datenhaltung.md",
     "Verteilte Systeme/PDFs/10. Verteilte_Datenhaltung.pdf",
@@ -197,17 +234,11 @@
     "Verteilte Systeme/6. Microservices und Laufzeit-Ökosysteme.md",
     "Verteilte Systeme/PDFs/6. Microservices und Laufzeit-Ökosysteme.pdf",
     "Verteilte Systeme/5. Komponenten-orientierte Middleware.md",
-    "Verteilte Systeme/PDFs/5. Komponenten-orientierte Middleware.pdf",
     "Verteilte Systeme/4. Webservices.md",
-    "Verteilte Systeme/PDFs/4. Webservices.pdf",
     "Verteilte Systeme/3. RPC, Verteilte Objekte, Namensdienste.md",
-    "Verteilte Systeme/PDFs/3. RPC, Verteilte Objekte, Namensdienste.pdf",
     "Verteilte Systeme/2. Grundlegende Kommunikationsmechanismen.md",
-    "Verteilte Systeme/PDFs/2. Grundlegende Kommunikationsmechanismen.pdf",
     "Verteilte Systeme/1. Verteiltes System.md",
-    "Verteilte Systeme/PDFs/1. Verteiltes System.pdf",
     "Unbenannt.canvas",
-    "Verteilte Systeme/11. MOM.md",
     "mom.jpg",
     "Verteilte Systeme/Klausurinhalte.md",
     "Willkommen.md",
