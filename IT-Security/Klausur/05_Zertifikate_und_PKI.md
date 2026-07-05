@@ -8,11 +8,9 @@
 # 1. Motivation: Warum Zertifikate und PKI?
 
 ## 1.1 Problem der Public-Key-Kryptographie
-
 Asymmetrische Kryptographie löst das Schlüsselverteilungsproblem symmetrischer Verfahren: Der **Public Key** darf veröffentlicht werden, der **Private Key** bleibt geheim.
 
 Digitale Signaturen können liefern:
-
 - **Authentizität**
 - **Integrität**
 - **Nicht-Abstreitbarkeit / Verbindlichkeit**
@@ -28,11 +26,9 @@ Wenn der Key tatsächlich Mallory gehört, kann Mallory Nachrichten entschlüsse
 ```
 
 ## 1.2 Zertifikat
-
-Ein digitales Public-Key-Zertifikat ist ein **signierter Datensatz**, der einen Public Key einer Entität zuordnet.
+> Ein digitales Public-Key-Zertifikat ist ein **signierter Datensatz**, der einen Public Key einer Entität zuordnet.
 
 Mindestens enthalten:
-
 - Public Key inklusive Algorithmus
 - möglichst eindeutige Bezeichnung der Entität:
   - Name
@@ -41,7 +37,6 @@ Mindestens enthalten:
   - X.500 Distinguished Name
 
 Typisch zusätzlich:
-
 - Aussteller (`Issuer`)
 - Ausstellungsdatum und Gültigkeitszeitraum
 - erlaubte Verwendungszwecke
@@ -49,7 +44,6 @@ Typisch zusätzlich:
 - Signatur des Ausstellers
 
 Eigenschaften:
-
 - Die Zuordnung kann unabhängig vom Transportweg geprüft werden.
 - Zertifikate können über öffentliche Keyserver/Verzeichnisdienste verteilt werden.
 - Sie sind online und offline verwendbar.
@@ -58,7 +52,6 @@ Eigenschaften:
 ## 1.3 PKI
 
 Eine **Public Key Infrastructure (PKI)** ist das Gesamtsystem für:
-
 - Ausstellung
 - Verteilung
 - Nutzung
@@ -68,9 +61,10 @@ Eine **Public Key Infrastructure (PKI)** ist das Gesamtsystem für:
 digitaler Zertifikate.
 
 Standards:
-
 - **X.509**: zentral/hierarchisch organisierte Zertifikatswelt, z. B. TLS.
 - **OpenPGP**: flexiblere, oft dezentralere Zertifikats- und Vertrauenswelt.
+
+![[Pasted image 20260705183958.png]]
 
 ---
 
@@ -154,17 +148,16 @@ C  = DE
 
 # 4. Komponenten einer X.509-PKI
 
-| Komponente | Aufgabe |
-|---|---|
-| **CA – Certification Authority** | Stellt Zertifikate aus und signiert sie; kann Root-CA oder Sub-CA sein. |
-| **RA – Registration Authority** | Prüft Identität von Antragstellern; stellt normalerweise nicht selbst Zertifikate aus. |
-| **Verzeichnisdienst** | Hält Zertifikate und Sperrinformationen vor, oft LDAP-basiert. |
-| **Zeitstempel-Dienst** | Signiert Dokumenthash zusammen mit aktueller Zeit; dient Nachweis, dass Daten zu bestimmtem Zeitpunkt vorlagen. |
-| **PSE – Personal Security Environment** | Sicherer Speicher für Private Keys. |
-| End Entity (EE) | Person/System mit Endzertifikat; darf normalerweise keine Zertifikate ausstellen. |
-
+| Komponente                              | Aufgabe                                                                                                         |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **CA – Certification Authority**        | Stellt Zertifikate aus und signiert sie; kann Root-CA oder Sub-CA sein.                                         |
+| **RA – Registration Authority**         | Prüft Identität von Antragstellern; stellt normalerweise nicht selbst Zertifikate aus.                          |
+| **Verzeichnisdienst**                   | Hält Zertifikate und Sperrinformationen vor, oft LDAP-basiert.                                                  |
+| **Zeitstempel-Dienst**                  | Signiert Dokumenthash zusammen mit aktueller Zeit; dient Nachweis, dass Daten zu bestimmtem Zeitpunkt vorlagen. |
+| **PSE – Personal Security Environment** | Sicherer Speicher für Private Keys.                                                                             |
+| End Entity (EE)                         | Person/System mit Endzertifikat; darf normalerweise keine Zertifikate ausstellen.                               |
+(LDAP-Lightweight Directory Access Control)
 ## 4.1 PSE-Beispiele
-
 - PKCS#12-Softtoken
 - Smartcard
 - USB-Token
@@ -177,7 +170,6 @@ C  = DE
 # 5. CA-Hierarchien und Trust Anchors
 
 ## 5.1 Trust Anchor
-
 Ein **Trust Anchor** ist eine CA, deren Public Key bereits authentisch vorliegt und als vertrauenswürdig angenommen wird.
 
 In Browsern/Betriebssystemen sind Trust Anchors meist in einer Trust List / Root Store vorinstalliert.
@@ -205,7 +197,6 @@ IPRA
 Mehrere unabhängige Hierarchien existieren nebeneinander.
 
 Folgen:
-
 - Nutzer benötigt mehrere Trust Anchors.
 - Trust List enthält Public Keys aller Top-Level-CAs.
 - Vertrauen kann hergestellt werden durch:
@@ -257,9 +248,7 @@ Für alle Zertifikate im Pfad:
 
 Für RSA ist die Signaturprüfung vereinfacht:
 
-```text
-s^e = h(m)
-```
+$$s^e = h(m)$$
 
 Dabei wird die Signatur mit öffentlichem Exponenten geprüft und mit dem Hash des signierten Inhalts verglichen.
 
@@ -279,7 +268,6 @@ Dabei wird die Signatur mit öffentlichem Exponenten geprüft und mit dem Hash d
 ## 7.2 CRL
 
 **CRL – Certificate Revocation List**
-
 - von der CA signierte Liste
 - enthält Seriennummern gesperrter Zertifikate
 - enthält Sperrzeitpunkt und Sperrgrund
@@ -302,7 +290,6 @@ Dabei wird die Signatur mit öffentlichem Exponenten geprüft und mit dem Hash d
 | Status für konkretes Zertifikat, geringe Datenmenge | Hohe Last auf CA/Responder; Verfügbarkeit und Datenschutz relevant. |
 
 ## 7.4 Whitelisting
-
 Selten alleiniger Mechanismus: Ungültige Zertifikate werden aus einem Verzeichnis entfernt. Ohne expliziten Sperrstatus ist das schwächer und weniger transparent.
 
 ---
@@ -334,16 +321,14 @@ Der Browser akzeptiert das Zertifikat möglicherweise, weil es von einer vertrau
 ## 9.1 HTTP Public Key Pinning (HPKP) – historisch
 
 Prinzip: **Trust on First Use (TOFU)**.
-
 1. Beim ersten Aufruf liefert Webserver Hashwerte zulässiger CA- oder End-Entity-Public-Keys.
 2. Browser speichert diese Pins für einen Zeitraum.
 3. Bei späteren Verbindungen muss mindestens ein gepinnter Key in der Kette vorkommen.
 4. Mindestens ein Backup Key muss gepinnt sein.
 
-Ziel: Nur bestimmte CAs bzw. Schlüssel für eine Domain akzeptieren.
+Ziel: Nur bestimmte CAs bzw. Schlüssel für eine Domain akzeptieren. Dient als Ersatzschlüssel
 
 Probleme:
-
 - Fehlkonfiguration oder Schlüsselverlust kann Domain für Nutzer unbrauchbar machen.
 - Wenn CA-Key gepinnt wurde, werden Änderungen/Umstellungen bei der CA kompliziert.
 - Deshalb wird von HPKP heute abgeraten; Browser-Support wurde eingestellt.
@@ -353,21 +338,18 @@ Probleme:
 Certificate Transparency reagiert auf heimlich oder unzulässig ausgestellte Zertifikate.
 
 Prinzip:
-
 1. CA trägt Zertifikat in ein öffentliches CT-Log ein.
 2. Das Log liefert einen **Signed Certificate Timestamp (SCT)** als Aufnahmebestätigung.
 3. Browser akzeptieren nur Zertifikate mit nachweisbarer Log-Aufnahme.
 4. Domaininhaber können Logs überwachen und falsch ausgestellte Zertifikate erkennen.
 
 Eigenschaften der Logs:
-
 - öffentlich
 - append-only: nur Anhängen, keine unbemerkte Änderung
 - kryptographisch gesichert über Merkle-Tree-Hashes
 - betrieben von verschiedenen Stellen
 
-SCT-Verteilung:
-
+Signed Certificate Timestamp(SCT)-Verteilung:
 - X.509v3-Erweiterung
 - TLS-Erweiterung `signed_certificate_timestamp`
 - OCSP-Antwort
@@ -391,6 +373,7 @@ SCT-Verteilung:
 
 Typischer Einsatz: Let’s Encrypt und Clients wie Certbot.
 
+![[Pasted image 20260705190821.png]]
 ## 10.2 Kernelemente
 
 | Begriff | Bedeutung |
@@ -436,7 +419,6 @@ MITM-Angreifer:
 3. hält Opfer auf HTTP.
 
 Folge:
-
 - Klartextübertragung von Passwörtern oder Cookies möglich,
 - Nutzer kann ggf. nicht erkennen, ob HTTP beabsichtigt ist.
 
@@ -453,7 +435,6 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 | `max-age=0` | HSTS deaktivieren. |
 
 ## 11.3 Ablauf
-
 1. Nutzer ruft Website per HTTPS auf.
 2. Browser validiert Zertifikat.
 3. Response enthält HSTS Header.
@@ -462,7 +443,6 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 6. Zertifikat nicht validierbar → Browser baut keine Verbindung auf.
 
 Grenzen:
-
 - Erster Besuch ist ohne vorher gespeicherte Policy noch angreifbar.
 - Nach Ablauf von `max-age` ebenfalls.
 
@@ -479,34 +459,28 @@ Abhilfe: **HSTS Preload List**, die HSTS-Domains bereits im Browser enthält.
 Heute ist **OpenPGP** der offene Standard für Nachrichten- und Zertifikatsformat.
 
 Anwendungen:
-
 - E-Mail-Verschlüsselung
 - E-Mail-Signaturen
 - Code Signing
 
 Implementierungen:
-
 - **GnuPG / GPG – GNU Privacy Guard**
 - GPG4Win
 
 Unterstützte Algorithmen im Foliensatz:
-
 - asymmetrisch: RSA, ElGamal, elliptische Kurven
 - symmetrisch: AES, 3DES
 - Hash: SHA-2-256, SHA-3
 
 ## 12.2 Web of Trust
-
 PGP verzichtet auf zwingend zentrale CA-Hierarchien. Vertrauen entsteht durch Nutzer und Signaturen auf Schlüsseln.
 
 Prinzip:
-
 - Nutzer prüfen Public-Key-Authentizität lokal nach eigener Policy.
 - Nutzer können Schlüssel anderer Nutzer signieren/beglaubigen.
 - Diese Nutzer können als **Trusted Introducers** fungieren.
 
 Modell:
-
 ```text
 Person/Public Key = Knoten
 Zertifikat/Schlüsselsignatur = gerichtete Kante
@@ -515,14 +489,12 @@ Zertifikat/Schlüsselsignatur = gerichtete Kante
 Es entsteht ein gerichteter Vertrauensgraph.
 
 ### Vorteile
-
 - kein zwingender zentraler Vertrauensanker
 - flexible Vertrauensstrukturen
 - prinzipiell skalierbar über viele Personen
 - lokale, individuelle Trust Policy möglich
 
 ### Nachteile
-
 - Vertrauen in fremde Personen und deren Sorgfalt notwendig
 - kein einheitlicher Standard für Qualität der Identitätsprüfung
 - keine Haftung bei Fehlbeglaubigungen, höchstens Reputationsverlust
@@ -544,13 +516,13 @@ Diese Begriffe müssen getrennt werden.
 
 > Wie sorgfältig prüft der Schlüsselinhaber andere Identitäten, bevor er deren Schlüssel signiert?
 
-| Level | Bedeutung |
-|---|---|
-| `unknown` | Standard: keine Aussage. |
-| `none` | Explizit kein Vertrauen. |
-| `marginal` | Begrenztes Vertrauen; Person signiert vermutlich angemessen. |
-| `complete` | Volles Vertrauen; Person prüft sehr sorgfältig. |
-| `ultimate` | Vollstes Vertrauen; Person darf auch für dich Vertrauensentscheidungen treffen. Typisch eigener Schlüssel. |
+| Level      | Bedeutung                                                                       |
+| ---------- | ------------------------------------------------------------------------------- |
+| `unknown`  | Standard: keine Aussage.                                                        |
+| `none`     | Explizit kein Vertrauen.                                                        |
+| `marginal` | Begrenztes Vertrauen; Person signiert vermutlich angemessen.                    |
+| `complete` | Volles Vertrauen; Person prüft sehr sorgfältig.                                 |
+| `ultimate` | Vollstes Vertrauen; Person darf auch für dich Vertrauensentscheidungen treffen. |
 
 ## 13.2 Key Validity
 
@@ -606,7 +578,6 @@ Das ermöglicht bessere Schlüsseltrennung und den Austausch einzelner Unterschl
 ## 14.4 Capabilities
 
 OpenPGP-Schlüssel können für unterschiedliche Zwecke markiert sein:
-
 - Zertifizieren
 - Signieren
 - Verschlüsseln für Kommunikation
@@ -634,6 +605,7 @@ Parameter:
 | `trust amount = 120` | complete trust |
 
 Allgemein: Level `n` erlaubt dem Zertifizierten, Trust Signatures für Level `n-1` auszustellen.
+![[Pasted image 20260705192336.png]]
 
 ---
 
@@ -641,12 +613,10 @@ Allgemein: Level `n` erlaubt dem Zertifizierten, Trust Signatures für Level `n-
 
 EFAIL bezeichnet Schwachstellen/Angriffe auf die Verarbeitung verschlüsselter E-Mails, insbesondere PGP und S/MIME.
 
-## 16.1 Exfiltration Gadget
-
+## 16.1 Direct Exfiltration
 Ein Angreifer fügt verschlüsselten Mailinhalt in HTML ein, etwa als externe Ressource. Nach der Entschlüsselung lädt der Mailclient externe Inhalte oder sendet Teile des Klartexts an einen Angreifer-Server.
 
 Voraussetzungen:
-
 - HTML-Maildarstellung,
 - automatisches Nachladen externer Inhalte,
 - häufig fehlende oder unzureichende Integritätsprüfung.

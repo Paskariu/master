@@ -23,7 +23,6 @@ Verschlüsselung kann im ISO/OSI-Modell auf verschiedenen Ebenen eingesetzt werd
 Bei der Leitungsverschlüsselung stehen an beiden Enden Verschlüsselungsboxen.
 
 Merkmale:
-
 - einfache Installation,
 - starker symmetrischer Algorithmus,
 - Geräte sind paarweise abgestimmt,
@@ -41,7 +40,6 @@ Merkmale:
 **WEP – Wired Equivalent Privacy** war ein optionaler Bestandteil von IEEE 802.11.
 
 Es sollte liefern:
-
 - Vertraulichkeit,
 - Integrität,
 - Authentizität.
@@ -56,18 +54,23 @@ Technik:
 | Authentisierung | entweder keine oder Shared-Key-Challenge-Response mit PSK |
 
 Verschlüsselungsprinzip:
+![[Pasted image 20260705204812.png]]
 
 ```text
 C = IV || ((M || CRC(M)) XOR RC4(IV || K))
 ```
 
-| Symbol | Bedeutung |
-|---|---|
-| `M` | Klartext |
-| `CRC(M)` | Prüfsumme |
-| `IV` | Initialisierungsvektor |
-| `K` | geheimer WEP-Schlüssel |
-| `C` | Chiffrat |
+| Symbol   | Bedeutung              |
+| -------- | ---------------------- |
+| `M`      | Klartext               |
+| `CRC(M)` | Prüfsumme              |
+| `IV`     | Initialisierungsvektor |
+| `K`      | geheimer WEP-Schlüssel |
+| `C`      | Chiffrat               |
+
+Decrypt:
+![[Pasted image 20260705204831.png]]
+
 
 ## Schwächen von WEP
 
@@ -108,11 +111,24 @@ WPA war eine Übergangslösung für ältere, leistungsschwache Access Points. Es
 WPA nutzt weiterhin RC4 und ist daher keine langfristig sichere Lösung.
 
 Schwächen:
-
 - RC4-Basis,
 - begrenzte Schlüsselstärke,
 - Dictionary Attacks gegen schwache Passphrasen,
 - ARP-Spoofing bleibt als Angriffsweg im LAN möglich.
+
+### Ablauf-Handshake
+![[Pasted image 20260705205425.png]]
+
+PSK: 8-63 ASCII Zeichen + Hash
+Pairweise Master Key (PMK)
+PMK = SSID x PSK + Hash
+
+Pairwise Transient Key (PTK)
+PTK = PMK, S/A-Nonce, MAC (Client/AP)
+PTK = dynamisch (Anmeldung & periodisch)
+
+### Ablauf Verschlüsselung
+![[Pasted image 20260705205737.png]]
 
 ---
 
@@ -139,8 +155,7 @@ Ablauf:
 5. Dadurch entstehen Angriffsoptionen auf den Verkehr.
 
 Gegenmaßnahme:
-
-- Client-/Firmware-Update.
+- Client-/Firmware-Update -> Zweiter Handshake wird ignoriert
 
 ---
 
@@ -148,31 +163,31 @@ Gegenmaßnahme:
 
 WPA3 verbessert Authentisierung und Verschlüsselung.
 
-| Verbesserung | Bedeutung |
-|---|---|
-| Besserer Handshake | Behebt die KRACK-Designproblematik. |
-| SAE | Simultaneous Authentication of Equals; ersetzt das klassische PSK-Handshake-Modell. |
-| Mehr Schutz bei schwachen Passwörtern | Offline-/Brute-Force-Angriffe werden stärker erschwert. |
-| Perfect Forward Secrecy | Kompromittierung eines Langzeitschlüssels soll alte Sitzungen nicht entschlüsseln. |
-| Individuelle Verschlüsselung in offenen Netzen | Pro Verbindung eigener Schlüssel, z. B. per Diffie-Hellman. |
-| IoT-Onboarding | Vereinfachte Einrichtung, etwa per QR-Code. |
-| Höhere Sicherheitsstufen | Unterstützung von 192-Bit-Sicherheitsniveau. |
+| Verbesserung                                   | Bedeutung                                                                           |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Besserer Handshake                             | Behebt die KRACK-Designproblematik.                                                 |
+| SAE                                            | Simultaneous Authentication of Equals; ersetzt das klassische PSK-Handshake-Modell. |
+| Mehr Schutz bei schwachen Passwörtern          | Offline-/Brute-Force-Angriffe werden stärker erschwert.                             |
+| Perfect Forward Secrecy                        | Kompromittierung eines Langzeitschlüssels soll alte Sitzungen nicht entschlüsseln.  |
+| Individuelle Verschlüsselung in offenen Netzen | Pro Verbindung eigener Schlüssel, z. B. per Diffie-Hellman.                         |
+| IoT-Onboarding                                 | Vereinfachte Einrichtung, etwa per QR-Code.                                         |
+| Höhere Sicherheitsstufen                       | Unterstützung von 192-Bit-Sicherheitsniveau.                                        |
 
 **Wichtig:** Bei offenen Netzen kann Diffie-Hellman ohne Authentisierung zwar Vertraulichkeit gegen passive Zuhörer liefern, schützt aber nicht automatisch gegen Man-in-the-Middle.
 
 ---
 
-# 3. GSM-Sicherheit
+# 3. Global Systems for Mobile Communication (GSM) -Sicherheit
 
 ## 3.1 Sicherheitsdienste in GSM
 
-| Schutzziel | Umsetzung |
-|---|---|
-| Zugangskontrolle | PIN schützt die SIM. |
-| Authentisierung | Challenge-Response zwischen SIM und Netz. |
-| Vertraulichkeit | Sprach- und Signalisierungsdaten werden nach Authentisierung verschlüsselt. |
-| Anonymität | TMSI statt dauerhaft sichtbarer Teilnehmerkennung. |
-
+| Schutzziel       | Umsetzung                                                                                 |
+| ---------------- | ----------------------------------------------------------------------------------------- |
+| Zugangskontrolle | PIN schützt die SIM.                                                                      |
+| Authentisierung  | Challenge-Response zwischen SIM und Netz.                                                 |
+| Vertraulichkeit  | Sprach- und Signalisierungsdaten werden nach Authentisierung verschlüsselt.               |
+| Anonymität       | TMSI statt dauerhaft sichtbarer Teilnehmerkennung. Bei Location Update (LUP) neu vergeben |
+TMSI: Temporäre Teilnehmererkennung (Temporary Mobile Subscriber Identity)
 ## 3.2 Identitäten und Algorithmen
 
 | Begriff | Bedeutung |
@@ -209,6 +224,8 @@ Ablauf:
    ```
 2. Mobilgerät und Basisstation verwenden A5 mit `Kc`, um Datenblöcke zu chiffrieren.
 
+![[Pasted image 20260705210359.png]]
+
 ---
 
 # 4. UMTS-Sicherheit
@@ -216,11 +233,10 @@ Ablauf:
 UMTS erweitert GSM um stärkere und stärker getrennte Sicherheitsmechanismen.
 
 ## 4.1 Gegenseitige Authentisierung
-
+![[Pasted image 20260705210516.png]]
 Die Abbildungen zeigen:
-
-- Kernnetz/AuC berechnet auf Basis von `K` und `RAND`:
-  - Authentisierungsdaten `AUTN`,
+- Kernnetz/Authentication Center berechnet auf Basis von `K` und `RAND`:
+  - Authentisierungnetzwerk `AUTN`,
   - erwartete Antwort `XRES`,
   - Schlüssel `CK` und `IK`.
 - Mobilgerät/USIM prüft `AUTN` und berechnet eigene Antwort `RES`.
@@ -229,6 +245,7 @@ Die Abbildungen zeigen:
 **Kernunterschied zu GSM:** UMTS unterstützt auch die Authentisierung des Netzes gegenüber dem Mobilgerät.
 
 ## 4.2 Schlüsselableitung
+![[Pasted image 20260705210806.png]]
 
 | Funktion | Ergebnis |
 |---|---|
@@ -239,8 +256,9 @@ Die Abbildungen zeigen:
 
 Bei UMTS wird ein Schlüsselstrom mit Funktion `F8` gebildet.
 
-Eingaben:
+![[Pasted image 20260705210825.png]]
 
+Eingaben:
 - `CK`,
 - `COUNT-C`,
 - `BEARER`,
@@ -252,9 +270,8 @@ Der erzeugte Key Stream Block wird per XOR auf die Nutzdaten angewandt.
 ## 4.4 Integrität
 
 UMTS berechnet mit `F9` einen MAC-I.
-
+![[Pasted image 20260705210855.png]]
 Eingaben:
-
 - `IK`,
 - Nachricht,
 - `COUNT-I`,
@@ -262,6 +279,10 @@ Eingaben:
 - `FRESH`.
 
 Empfänger berechnet `XMAC-I` und vergleicht ihn mit `MAC-I`.
+
+## 4.5 UMTS Gesamtsystem
+![[Pasted image 20260705210945.png]]
+
 
 **Merksatz:**  
 GSM: vor allem Authentisierung und Verschlüsselung.  
@@ -276,13 +297,11 @@ UMTS: zusätzlich getrennte Schlüssel und expliziter Integritätsschutz.
 TLS ist der Nachfolger von SSL und sichert typischerweise TCP-basierte Client-Server-Kommunikation.
 
 Historisch:
-
 - SSLv2/SSLv3 sind obsolet.
 - TLS 1.0 und TLS 1.1 gelten ebenfalls als überholt.
 - TLS 1.2 und insbesondere TLS 1.3 sind relevante moderne Versionen.
 
 TLS schützt typischerweise:
-
 - Vertraulichkeit,
 - Integrität,
 - Serverauthentisierung,
@@ -290,25 +309,24 @@ TLS schützt typischerweise:
 
 ## 5.2 Session und Verbindung
 
-| Begriff | Bedeutung |
-|---|---|
-| **TLS Session** | Aushandlung der kryptographischen Algorithmen und eines gemeinsamen Master Secrets. Mehrere Verbindungen können derselben Session zugeordnet sein. |
-| **TLS Verbindung** | Eine einzelne TCP-Verbindung; verwendet individuelle, aus dem Master Secret abgeleitete Schlüssel. |
+| Begriff            | Bedeutung                                                                                                                                          |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **TLS Session**    | Aushandlung der kryptographischen Algorithmen und eines gemeinsamen Master Secrets. Mehrere Verbindungen können derselben Session zugeordnet sein. |
+| **TLS Verbindung** | Eine einzelne TCP-Verbindung; verwendet individuelle, aus dem Master Secret abgeleitete Schlüssel und Algorithmen der zugeordneten Session.        |
 
 ## 5.3 Schutzziele und Bausteine
 
-| Ziel | Mechanismus |
-|---|---|
-| Authentisierung | X.509-Zertifikate, optional Clientzertifikate. |
-| Integrität | MAC/HMAC bzw. moderne AEAD-Modi. |
-| Vertraulichkeit | Symmetrische Verschlüsselung. |
-| Schlüsselaustausch | RSA oder Diffie-Hellman/ECDHE. |
+| Ziel               | Mechanismus                                         |
+| ------------------ | --------------------------------------------------- |
+| Authentifikation   | X.509-Zertifikate, optional Clientzertifikate.      |
+| Integrität         | MAC/HMAC bzw. moderne AEAD-Modi.                    |
+| Vertraulichkeit    | Symmetrische Verschlüsselung, wählbare Cipher Suite |
+| Schlüsselaustausch | RSA oder Diffie-Hellman/ECDHE.                      |
 
 Mögliche Modi:
-
-- Server authentifiziert, Client anonym: typischer Browser-Webserver-Fall.
-- Server und Client authentifiziert: Clientzertifikate.
-- Server und Client anonym: kein Schutz gegen MITM.
+- Einseitig: Server authentifiziert, Client anonym: typischer Browser-Webserver-Fall.
+- Wechselseitig: Server und Client authentifiziert: Clientzertifikate.
+- Anonym: Server und Client anonym: kein Schutz gegen MITM.
 
 ## 5.4 Cipher Suites lesen
 
@@ -329,7 +347,6 @@ TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 ## 5.5 TLS-Handshake
 
 Aufgaben:
-
 1. Cipher Suite bzw. kryptographische Verfahren aushandeln.
 2. Frische Zufallswerte und geheime Basisinformationen austauschen.
 3. Gemeinsames Master Secret bestimmen.
@@ -338,41 +355,48 @@ Aufgaben:
 6. Sitzungsinformationen verwalten.
 
 Vereinfacht:
+![[Pasted image 20260705214432.png]]
 
-```text
-ClientHello
--> unterstützte Versionen, Cipher Suites, Zufallswert
-
-ServerHello + Zertifikat
--> gewählte Suite, Zufallswert, Serveridentität
-
-Schlüsselaustausch
--> gemeinsames Pre-Master-Secret
-
-Master Secret und Verbindungsschlüssel ableiten
-
-Finished-Nachrichten
--> Bestätigung des sicheren Handshakes
-
-Geschützte Nutzdaten
-```
+- ClientHello
+	- Protokollversion
+	- Randomzahl R_c
+	- bekannte Cipher Suite
+	- bekannte Komprimiermethoden
+- ServerHello
+	- Protokollversion
+	- Randomzahl R_s
+	- gewählte Cipher Suite
+	- gewählte Komprimiermethoden
+- ServerCertifikat
+	- Liste der Zertifikate und Zertifizierungskette
+	- Server Public Key, wenn RSA
+- ClientKeyExchange
+	- gemeinsames Pre-Master-Secret mit Server-Public-Key verschlüsselt an Client
+	- Master Secret und Verbindungsschlüssel ableiten
+- Finished-Nachrichten
+	- Bestätigung des sicheren Handshakes
+- Ab dann Applikationsdaten
 
 ## 5.6 Record Layer und TLS-Protokolle
 
-| Teil | Aufgabe |
-|---|---|
-| Record Protocol | Fragmentiert Daten, schützt sie kryptographisch und überträgt sie. |
-| ChangeCipherSpec | Historisch: signalisiert Wechsel auf ausgehandelte Verfahren. |
-| Alert Protocol | Fehler-/Warnmeldungen, z. B. fehlgeschlagene MAC-Prüfung. |
-| Handshake Protocol | Aushandlung und Authentisierung. |
-
+| Teil                | Aufgabe                                                            |
+| ------------------- | ------------------------------------------------------------------ |
+| SSL Record Protocol | Fragmentiert Daten, schützt sie kryptographisch und überträgt sie. |
+| ChangeCipherSpec    | Historisch: signalisiert Wechsel auf ausgehandelte Verfahren.      |
+| Alert Protocol      | Fehler-/Warnmeldungen, z. B. fehlgeschlagene MAC-Prüfung.          |
+| Handshake Protocol  | Aushandlung und Authentisierung.                                   |
+Schlüsselerzeugung aus Pre, R_c, R_s
+Master Secret = MD5( Pre | SHA('A' | Pre | RC | RS )) |
+MD5( Pre SHA('BB' Pre RC RS ))
+MD5( Pre SHA('CCC' Pre RC RS
+Master Secret: 3 · 128 Bit = 384 Bit = 48 Byte
 ## 5.7 Diffie-Hellman in TLS
 
 Diffie-Hellman kann statt RSA für den Schlüsselaustausch genutzt werden.
-
 - Server stellt temporären DH-Public-Key bereit.
 - Dieser wird typischerweise mit Server-Signaturschlüssel signiert.
-- Client und Server berechnen ein gemeinsames Geheimnis.
+- Server erhält DH-Parameter des Clients
+- Client und Server berechnen den gemeinsamen DH-Schlüssel KSC.
 - Dieses dient als Pre-Master-Secret.
 
 **Wichtig:** Anonymes Diffie-Hellman ohne Zertifikat/Signatur ist gegen Man-in-the-Middle anfällig.
@@ -384,8 +408,13 @@ Diffie-Hellman kann statt RSA für den Schlüsselaustausch genutzt werden.
 3. Client signiert die relevanten Handshake-Daten mit Private Key.
 4. Server prüft Signatur und Zertifikatskette.
 
-## 5.9 Grenzen und Probleme von TLS
+Sessions:
+- Handshake Protokoll unterstützt:
+	- erneute Verwendung von SessionIDs
+	- Aushandeln neuer Ciphersuites während einer Session
+	- Re-Keying Verbingung: Handshake mit frischen Nonces
 
+## 5.9 Grenzen und Probleme von TLS/SSL
 - TLS ersetzt keine digitale Signatur einer einzelnen Geschäftshandlung; daher keine automatische rechtliche Verbindlichkeit.
 - Zertifikatswarnungen und Namensabweichungen dürfen nicht ignoriert werden.
 - Fehlende Zertifikatsprüfung in Nicht-Browser-Anwendungen ermöglicht MITM.
@@ -396,7 +425,6 @@ Diffie-Hellman kann statt RSA für den Schlüsselaustausch genutzt werden.
 ## 5.10 TLS 1.3
 
 Verbesserungen:
-
 - verkürzter Handshake,
 - optional 0-RTT für bekannte Verbindungen,
 - moderne Kryptographie erzwungen,
@@ -421,12 +449,10 @@ TLS_AES_128_CCM_8_SHA256
 **IPsec** ist eine Sicherheitsarchitektur auf Schicht 3.
 
 Ziele:
-
 - Authentizität des Datenursprungs,
-- Integrität,
-- Vertraulichkeit der IP-Nutzlast,
-- Schutz gegen Replay-Angriffe,
-- Schlüsselmanagement und Schlüsselwechsel.
+- Integrität und Schutz gegen Replay-Angriffe,
+- Vertrauliche Datenübertragung
+- Schlüsselmanagement: Erneuerung und Austausch.
 
 Typische Anwendung: VPNs.
 
@@ -437,26 +463,104 @@ Typische Anwendung: VPNs.
 | **AH – Authentication Header** | Integrität und Authentizität von Ursprung/Payload; Sequenznummer gegen Replay; keine Vertraulichkeit. |
 | **ESP – Encapsulating Security Payload** | Vertraulichkeit der IP-Daten; optional Integrität/Authentizität mit HMAC und Replay-Schutz. |
 | **IKE/IKEv2** | Aushandlung bzw. Verteilung von Schlüsseln und Sicherheitsparametern. |
++ Regelwerk (Policy)
+	+ welche Pakete von wem, zu wem, mit welchen Verfahren
+	+ Security-Policy-Database (SPD) (pro IPSec-Rechner)
++ Speicherung der Sicherheitsparameter:
+	+ Security Association (SA): Verfahren, Schlüssel
+	+ Verfahren, Schlüssel pro Verbindung/ Zustand der IP
+	+ Inbound, Outbound-Datenbanken
+### 6.2.1 Authentication Header Protocol (AH)
+- Authentizität, Integrität des Datenursprungs u. Payloads
+- Verhinderung von Replay-Attacken über Sequenznummer
+
+Format: IP-Header | AH-Header | Daten
+![[Pasted image 20260705221429.png]]
++ beinhaltet:
+	+ Next Header (TCP) | Payload length | Reserved
+	+ Security parameters index (SPI)
+		+ Identifiziert die zu verwendeten Verfahren etc.
+	+ Sequence Nummer
+		+ Anti-Replay
+	+ ICV: Integrity Check Value (HMAC of IP header, AH, TCP payload)
+		+ Authentifizierung des Ursprungs zur garantie der Integrität des Payloads
+### 6.2.2 Encapsulating Security-Payload (ESP)
++ Vertraulichkeit der Daten des IP-Datenpakets, Symmetrische Blockchiffre, NULL-Algorithmus zulässig
++ Authentisierung des Payloads mittels HMAC
++ (optionaler) Schutz vor Replays
+![[Pasted image 20260705222016.png]]
 
 ## 6.3 Transport- und Tunnel-Modus
 
-| Modus | Schutzumfang | Typischer Einsatz |
-|---|---|---|
-| **Transport Mode** | Absicherung primär der Nutzlast; ursprünglicher IP-Header bleibt sichtbar. | Host-zu-Host. |
-| **Tunnel Mode** | Originaler IP-Header und Nutzlast werden vollständig in neues IPsec-Paket eingekapselt. | Gateway-zu-Gateway / VPN. |
-
+| Modus              | Schutzumfang                                                                            | Typischer Einsatz         |
+| ------------------ | --------------------------------------------------------------------------------------- | ------------------------- |
+| **Transport Mode** | Absicherung primär der Payload; ursprünglicher IP-Header bleibt sichtbar.               | Host-zu-Host.             |
+| **Tunnel Mode**    | Originaler IP-Header und Nutzlast werden vollständig in neues IPsec-Paket eingekapselt. | Gateway-zu-Gateway / VPN. |
+![[Pasted image 20260705222220.png]]
 Geschachtelte Tunnel sind möglich, z. B. äußerer Tunnel durchs Internet und innerer Tunnel hinter einer Firewall.
 
 ## 6.4 SPD, SA und SPI
 
-| Begriff | Bedeutung |
-|---|---|
-| **SPD – Security Policy Database** | Regelwerk, welche Pakete von wem zu wem mit welchem Verfahren geschützt, verworfen oder durchgelassen werden. |
-| **SA – Security Association** | Sicherheitsparameter einer Richtung, etwa Algorithmen, Schlüssel, Lebensdauer und Anti-Replay-Informationen. |
-| **SPI – Security Parameters Index** | Kennung im IPsec-Paket; verweist beim Empfänger auf die passende SA. |
+### Security Association Datenstruktur (SA)
+> Regelwerk, welche Pakete von wem zu wem mit welchem Verfahren geschützt, verworfen oder durchgelassen werden
+
++ Werden in SA-DBs von A bzw. B verwaltet
++ SA enthält alle benötigten Informationen für IPsec-Verbindungen zwischen zwei Rechnern A und B
++ SAs haben nur unidirektionale gültigkeit
++ für jedes Protokoll (AH/ESP) eigene SA nötig
++ vorab idR über IKE ausgehandelt und erstellt
++ Anlegung bei erstmaligem Verbindungsaufbau
+
+Enthält:
+- IP-Adresse des Empfängers
+- AH-Informationen
+	- Algorithmus, Schlüssel, Schlüssellebenszeit
+- ESP-Informationen
+	- Algorithmen, Schlüssel, Initialwerte, Lebenszeiten
+- Lebenszeit der SA: Zeitinterval oder Bytecounter
+- Sequenzzähler: für AH, ESP
+- Modus: Transport oder Tunnel
+- Anti-Replay-Window: einkommene Replays erkennen
+- Security-Level (z.B. für Multi-Level sichere Systeme)
+
+### Security Parameters Index (SPI)
+> Kennung im IPsec-Paket; verweist beim Empfänger auf die passende SA.
+
++ jedes IPsec Paket enthält einen Index (SPI)
++ verweist auf einen SA-Eintrag in der SA-DB des Empfängers
+	+ dort sind dann die notwendigen Verarbeitungsinformationen
+
+### Security Policy Database
+> Regelwerk, welche Pakete von wem zu wem mit welchem Verfahren geschützt, verworfen oder durchgelassen werden.
+
++ pro IP-Sec Rechner eine
++ individuelle Regeln fr  inbound und outbound
++ jede Regel über Selektor spezifiziert
++ Selektor für ein IP-Paket, welches dieselben Einträge im Selektorformfeld haben
++ wenn Selektor anwendbar: erhält die SPD eine die mit dem IP-Paket durchzuführende Aktion
+
+| From    | To      | Protocol | Port | Policy                  |
+| ------- | ------- | -------- | ---- | ----------------------- |
+| 1.1.1.1 | 2.2.2.2 | TCP      | 80   | Transport ESP with 3DES |
++ Selektoren, die einen SPD-Eintrag bestimmen:
+	+ IP-Adresse, Adressbereiche, Wildcard des Empfängers/Senders
+	+ Sender-, Empfänger-Ports, Liste von Ports, Wildcard
+	+ Name: z.B. DNS-Name, X.500 distinguished Name
++ Unterschied zwischen inbound/outbound
+	+ bei ausgehenden Paketen werden beim Anwenden der Regel die erforderlichen SAs (AH, ESP) etabliert (IKE)
+	+ inbound Pakete: verwerfen falls keine SA vorhanden
++ Aktionen:
+	+ bypass: direktes Weiterleiten
+	+ apply: IPsec anwenden, verweis auf SA
+	+ discard: Paketvernichtung
+
+| Begriff                             | Bedeutung                                                                                                     |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **SPD – Security Policy Database**  | Regelwerk, welche Pakete von wem zu wem mit welchem Verfahren geschützt, verworfen oder durchgelassen werden. |
+| **SA – Security Association**       | Sicherheitsparameter einer Richtung, etwa Algorithmen, Schlüssel, Lebensdauer und Anti-Replay-Informationen.  |
+| **SPI – Security Parameters Index** | Kennung im IPsec-Paket; verweist beim Empfänger auf die passende SA.                                          |
 
 Wichtige Eigenschaften:
-
 - SAs sind unidirektional.
 - Für beide Richtungen werden separate SAs benötigt.
 - Für AH und ESP sind jeweils eigene SAs möglich/nötig.
@@ -464,7 +568,7 @@ Wichtige Eigenschaften:
 
 ## 6.5 Ablauf beim Versand eines IPsec-Pakets
 
-1. Sender prüft SPD und sucht passende SA.
+1. Sender prüft SPD auf Verbindung mit Empfänger und sucht passende SA.
 2. Sender nutzt die SA-Parameter:
    - Verschlüsselung,
    - Hash/MAC,
@@ -485,11 +589,9 @@ Wichtige Eigenschaften:
 ## 6.7 IPsec-Fazit
 
 Vorteil:
-
 - Bei korrekter Konfiguration hoher Sicherheitsgrad und anwendungsunabhängiger Schutz auf IP-Ebene.
 
 Nachteile:
-
 - Policy-Konfiguration ist komplex und fehleranfällig.
 - Viele Optionen können zu unsicheren Modus-/Algorithmusentscheidungen führen.
 - Interoperabilitätsprobleme zwischen Implementierungen.
@@ -519,7 +621,6 @@ Nachteile:
 **SSH2 – Secure Shell** schützt Kommunikation auf Anwendungsebene.
 
 Typische Anwendungen:
-
 - sicheres Remote Login,
 - sichere Dateiübertragung,
 - sichere Remote-Kommandos,
@@ -562,6 +663,8 @@ lokaler Client:localhost:lport
 -> rhost:rport
 ```
 
+mit Bastion:![[Pasted image 20260705224242.png]]
++ Bastion: besonders gehärteter Server, der als Schnittstelle nach außen dient
 ### Remote Forwarding
 
 ```bash
@@ -575,6 +678,7 @@ Nutzer am SSH-Server:port
 -> SSH-Tunnel
 -> lokaler Client lhost:lport
 ```
+![[Pasted image 20260705224358.png]]
 
 ---
 

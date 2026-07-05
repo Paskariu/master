@@ -34,15 +34,13 @@ Angriffe können jede Schicht treffen:
 ## 1.2 HTTP-Eigenschaften und Risiken
 
 HTTP ist von sich aus nicht sicher:
-
 - keine Verschlüsselung,
 - keine Integritätssicherung,
 - keine Serverauthentisierung.
 
-Diese Eigenschaften entstehen erst mit **TLS/HTTPS**. Ohne TLS werden Sniffing und Maskierung erheblich erleichtert.
+Diese Eigenschaften entstehen erst mit **TLS/SSL**. Ohne TLS werden Sniffing und Maskierung erheblich erleichtert.
 
 Privatsphäre-Risiken bei HTTP/Webnutzung:
-
 - `Referer`-Header kann zuvor besuchte URL inkl. Pfad/Parametern preisgeben,
 - Cookies ermöglichen Tracking,
 - Browser-Fingerprinting erlaubt Wiedererkennung über Merkmalskombinationen.
@@ -59,7 +57,6 @@ Privatsphäre-Risiken bei HTTP/Webnutzung:
 ## 1.4 HTML5 und lokaler Speicher
 
 HTML5 ermöglicht umfangreiche Anwendungen und Offline-Funktionen. Risiken:
-
 - **Web Storage** und **IndexedDB** erweitern lokalen Speicher,
 - persistente Speicherung kann Tracking erleichtern,
 - persistenter Schadcode oder rechtswidrige Inhalte können abgelegt werden.
@@ -73,7 +70,6 @@ HTML5 ermöglicht umfangreiche Anwendungen und Offline-Funktionen. Risiken:
 HTTP ist **zustandslos**. Jeder Request wird isoliert behandelt; ohne Zusatzmechanismus kann der Server mehrere Requests nicht zuverlässig einem Nutzer oder Vorgang zuordnen.
 
 Lösungen:
-
 - Cookies
 - URL-Rewriting
 - Hidden Form Fields
@@ -174,7 +170,6 @@ Beispiel: Cookie wird auf `foo.example.com/my/a/index.html` gesetzt.
 ## 2.7 Wann sendet der Browser Cookies?
 
 Ein Cookie wird gesendet, wenn:
-
 1. `Domain` zum Host der URL passt  
    - bei Host-Only: exakt identisch  
    - sonst: Cookie-Domain ist Suffix des Hosts
@@ -204,7 +199,6 @@ document.cookie = "ID=Alice; max-age=0";
 ## 3.1 Client kann Cookie-Werte manipulieren
 
 Der Server erhält nur das Name-Value-Paar. Er weiß nicht:
-
 - welche ursprünglichen Attribute gesetzt waren,
 - welche Domain das Cookie gesetzt hat,
 - ob der Client den Wert verändert hat.
@@ -240,11 +234,11 @@ price=19.99 -> price=0.01
 
 ## 3.3 Cookie-Diebstahl und Cookie-Missbrauch
 
-| Angriff | Idee |
-|---|---|
-| **XSS** | Schadcode liest Cookie aus und sendet ihn an Angreifer. `HttpOnly` erschwert dies. |
-| **CSRF** | Browser sendet Session-Cookie automatisch mit; Angreifer missbraucht bestehende Sitzung. |
-| Tracking | Persistente/Third-Party Cookies verbinden Aktivitäten über Seiten hinweg. |
+| Angriff      | Idee                                                                                     |
+| ------------ | ---------------------------------------------------------------------------------------- |
+| **XSS**      | Schadcode liest Cookie aus und sendet ihn an Angreifer. `HttpOnly` erschwert dies.       |
+| **CSRF**     | Browser sendet Session-Cookie automatisch mit; Angreifer missbraucht bestehende Sitzung. |
+| **Tracking** | Persistente/Third-Party Cookies verbinden Aktivitäten über Seiten hinweg.                |
 
 ---
 
@@ -253,7 +247,6 @@ price=19.99 -> price=0.01
 ## 4.1 Third-Party Cookies
 
 Third-Party Cookies stammen von eingebundenen Drittanbietern, etwa durch:
-
 - Anzeigen,
 - JavaScript,
 - iFrames,
@@ -266,7 +259,6 @@ Dadurch kann ein Drittanbieter Nutzer über verschiedene Websites wiedererkennen
 Wiedererkennung ist auch nach Cookie-Löschung möglich.
 
 Mögliche Merkmale:
-
 - Browserversion
 - Sprache
 - installierte Fonts
@@ -277,21 +269,17 @@ Mögliche Merkmale:
 - Rendering-Eigenschaften
 
 ### Canvas Fingerprinting
-
 Canvas ist ein HTML5-Feature zum Zeichnen von Grafiken. Das Rendering kann je nach System, Browser, GPU, Fonts und Treibern leicht variieren. Das Ergebnis wird als Fingerprint genutzt.
 
 ### WebGL Fingerprinting
-
 WebGL kann Hardware-/Renderinginformationen preisgeben und sogar browserübergreifende Fingerprints des Betriebssystems ermöglichen.
 
 ### ETag-Tracking
-
 `ETag` ist eigentlich ein Caching-Mechanismus. Ein individueller ETag kann missbraucht werden, um Nutzer wiederzuerkennen.
 
 ## 4.3 Ende der Third-Party Cookies und Topics API
 
 Die Folien behandeln die schrittweise Einschränkung von Third-Party Cookies:
-
 - Safari blockiert sie seit Jahren.
 - Chrome testete einen Ausstieg, zog eine vollständige separate Zustimmungslösung 2025 aber zurück.
 - Der Wegfall bedroht viele Werbemodelle.
@@ -299,7 +287,6 @@ Die Folien behandeln die schrittweise Einschränkung von Third-Party Cookies:
 ### Topics API
 
 Grundidee:
-
 1. Browser analysiert Browserverlauf.
 2. Browser ordnet Interessen einer Taxonomie zu.
 3. Für jede Woche werden einige Topics ermittelt.
@@ -314,14 +301,12 @@ Grundidee:
 ## 5.1 JavaScript-Sandbox
 
 JavaScript wird im Browser in einer Sandbox ausgeführt:
-
 - kein direkter Dateisystemzugriff,
 - nur eingeschränkte Browser-APIs,
 - Schutz sensibler Funktionen wie Verlauf oder Zwischenablage,
 - Zugriff auf andere Websites wird zentral durch die **Same Origin Policy (SOP)** beschränkt.
 
 ## 5.2 Same Origin Policy
-
 Die SOP untersagt JavaScript den lesenden Zugriff auf Objekte anderer Origins.
 
 Eine **Origin** besteht aus:
@@ -381,7 +366,6 @@ SOP verhindert in vielen Fällen das **Lesen** fremder Responses. Sie verhindert
 # 6. Subresource Integrity (SRI)
 
 Websites binden häufig Drittressourcen ein:
-
 - JavaScript-Bibliotheken,
 - Fonts,
 - Stylesheets,
@@ -413,7 +397,6 @@ Grenze: SRI schützt nicht gegen einen bewusst aktualisierten, aber bösartigen 
 AJAX = **Asynchronous JavaScript and XML**.
 
 Zweck:
-
 - Seite ohne komplettes Neuladen aktualisieren,
 - Daten asynchron mit Server austauschen.
 
@@ -423,11 +406,9 @@ Moderner Mechanismus: `fetch()`.
 Sicherheitsrelevanz: Diese APIs unterliegen SOP und CORS.
 
 ## 7.2 DNS Rebinding
-
 DNS Rebinding versucht, die SOP durch wechselnde DNS-Auflösungen zu umgehen.
 
 Ablauf bei Time-Varying DNS:
-
 1. Opfer lädt JavaScript von `attacker.com`.
 2. DNS antwortet zunächst mit Angreifer-IP.
 3. Antwort hat kurze TTL, damit Browser schnell erneut auflöst.
@@ -435,7 +416,6 @@ Ablauf bei Time-Varying DNS:
 5. JavaScript bleibt für Browser unter `attacker.com` und kann nun Requests an interne Ziel-IP ausführen/lesen.
 
 Mögliche Folgen:
-
 - Zugriff auf interne Webinterfaces, Drucker oder Router,
 - Scans interner Netze,
 - Umgehung von Firewalls,
@@ -443,7 +423,6 @@ Mögliche Folgen:
 - Missbrauch der Opfer-IP für Spam oder Click Fraud.
 
 Gegenmaßnahmen:
-
 - **DNS Pinning:** Browser merkt sich IP für gewisse Zeit.
 - extrem kurze TTLs ablehnen bzw. absichern,
 - Firewalls dürfen keine externen DNS-Antworten für interne IP-Bereiche akzeptieren.
@@ -455,7 +434,6 @@ Gegenmaßnahmen:
 ## 8.1 Zweck
 
 Manchmal soll JavaScript absichtlich Ressourcen einer anderen Origin lesen dürfen, z. B.:
-
 - API-Aufrufe,
 - Web Fonts,
 - Bilder,
@@ -466,7 +444,6 @@ Manchmal soll JavaScript absichtlich Ressourcen einer anderen Origin lesen dürf
 ## 8.2 Simple Requests
 
 Bei einfachen Cross-Origin-Requests:
-
 1. Script sendet `GET` oder `POST`.
 2. Browser ergänzt:
 
@@ -485,7 +462,6 @@ Access-Control-Allow-Origin: https://foo.example
 ## 8.3 Preflighted Requests
 
 Vorab-`OPTIONS`-Anfrage ist nötig, u. a. bei:
-
 - Methoden wie `PUT` oder `DELETE`,
 - bestimmten Content-Types wie `text/xml`,
 - selbst gesetzten Headern wie `X-PINGOTHER`.
@@ -499,7 +475,6 @@ Browser fragt vor dem eigentlichen Request ab, ob Server Methode, Header und Ori
 # 9. OWASP Top 10 2025
 
 OWASP erstellt eine Top-10-Rangliste typischer Risiken in Webanwendungen. Grundlage sind:
-
 - Praxisdaten von Sicherheitsfirmen,
 - CWE-Klassifikationen,
 - Häufigkeit,
@@ -510,11 +485,9 @@ OWASP erstellt eine Top-10-Rangliste typischer Risiken in Webanwendungen. Grundl
 Ziel: Entwickler sensibilisieren und Prioritäten setzen.
 
 ## 9.1 A01: Broken Access Control
-
-**Definition:** Mangelhafter Zugriffsschutz auf Daten oder Funktionen.
+> **Definition:** Mangelhafter Zugriffsschutz auf Daten oder Funktionen.
 
 Beispiele:
-
 - leicht erratbare URLs / Forced Browsing: `/admin.php`, `/logs/`
 - Parameter-Manipulation: `/kontostand.php?user=alice`
 - manipulierte Cookies oder JWTs
@@ -524,7 +497,6 @@ Beispiele:
 - fehlerhafte CORS-Konfiguration
 
 Gegenmaßnahmen:
-
 - **Deny by Default / Least Privilege**
 - Zugriffskontrolle zentral implementieren
 - serverseitige Autorisierungsprüfung bei jeder Anfrage
@@ -534,11 +506,9 @@ Gegenmaßnahmen:
 - Fehler/Verstöße protokollieren und alarmieren
 
 ## 9.2 A02: Security Misconfiguration
-
-**Definition:** Unsichere Konfiguration von Web-, Application-, Datenbankservern oder Cloud-Diensten.
+> **Definition:** Unsichere Konfiguration von Web-, Application-, Datenbankservern oder Cloud-Diensten.
 
 Beispiele:
-
 - unnötige Features nicht deaktiviert
 - Default-Accounts/Passwörter
 - Directory Listing
@@ -546,7 +516,6 @@ Beispiele:
 - Entwicklungs-/Testkonfiguration in Produktion
 
 Gegenmaßnahmen:
-
 - Hardening und minimale Installation
 - automatisierte, konsistente Konfiguration
 - unterschiedliche Credentials für Dev, Test und Produktion
@@ -555,11 +524,9 @@ Gegenmaßnahmen:
 - geeignete HTTP Security Header
 
 ## 9.3 A03: Software Supply Chain Failures
-
-**Definition:** Kompromittierungen im Build-, Verteilungs- oder Update-Prozess, oft über Drittcode, Tools oder Abhängigkeiten.
+> **Definition:** Kompromittierungen im Build-, Verteilungs- oder Update-Prozess, oft über Drittcode, Tools oder Abhängigkeiten.
 
 Beispiele:
-
 - kein Überblick über Dependencies
 - veraltete, verwundbare oder nicht mehr unterstützte Komponenten
 - Pakete aus kompromittierten Quellen
@@ -567,8 +534,7 @@ Beispiele:
 - kompromittierte Build- oder Update-Infrastruktur
 
 Gegenmaßnahmen:
-
-- **SBOM** erzeugen und pflegen
+- **Software Bill of Materials (SBOM)** erzeugen und pflegen
 - transitive Dependencies berücksichtigen
 - unnötige Dependencies entfernen
 - CVE/NVD/OSV.dev überwachen
@@ -578,11 +544,9 @@ Gegenmaßnahmen:
 - Dependency Track oder vergleichbare Werkzeuge
 
 ## 9.4 A04: Cryptographic Failures
-
-**Definition:** Daten bei Speicherung oder Übertragung sind nicht angemessen geschützt.
+> **Definition:** Daten bei Speicherung oder Übertragung sind nicht angemessen geschützt.
 
 Beispiele:
-
 - Klartextübertragung: HTTP, FTP
 - Klartext intern zwischen Load Balancer und Backend
 - schwache Algorithmen/Protokolle
@@ -591,7 +555,6 @@ Beispiele:
 - Passwort direkt als Schlüssel
 
 Gegenmaßnahmen:
-
 - Daten klassifizieren
 - aktuelle Algorithmen und Protokolle nutzen
 - TLS mit PFS und HSTS
@@ -600,11 +563,9 @@ Gegenmaßnahmen:
 - Passwort-Hashing mit **Salt + Work Factor**, z. B. PBKDF2
 
 ## 9.5 A05: Injection
-
-**Definition:** Angreifer schleust eigene Befehle oder Code in Interpreter bzw. Ausgabekontexte ein.
+> **Definition:** Angreifer schleust eigene Befehle oder Code in Interpreter bzw. Ausgabekontexte ein.
 
 Beispiele:
-
 - SQL Injection
 - Command Injection
 - LDAP Injection
@@ -612,7 +573,6 @@ Beispiele:
 - fehlerhafte Eingabevalidierung in Parametern, Headern, URLs, Cookies, JSON, SOAP oder XML
 
 Gegenmaßnahmen:
-
 - sichere APIs und parametrisierte Schnittstellen
 - serverseitige Inputvalidierung
 - kontextabhängiges Escaping
@@ -622,17 +582,14 @@ Gegenmaßnahmen:
 - CSP als zusätzliche Schutzschicht
 
 ## 9.6 A06: Insecure Design
-
-**Definition:** Schutzmaßnahme fehlt oder ist unwirksam wegen falscher Entscheidungen in der Designphase, nicht nur wegen fehlerhafter Implementierung.
+>**Definition:** Schutzmaßnahme fehlt oder ist unwirksam wegen falscher Entscheidungen in der Designphase, nicht nur wegen fehlerhafter Implementierung.
 
 Beispiele:
-
 - Passwörter werden im Klartext gespeichert
 - ein Masterpasswort für Supportzugriffe
 - Shop erlaubt Bots den Kauf knapper Produkte ohne Limit
 
 Gegenmaßnahmen:
-
 - Secure Software Development Lifecycle
 - Threat Modeling
 - mehrschichtige Architektur und Trennung der Schichten
@@ -641,11 +598,9 @@ Gegenmaßnahmen:
 - Ressourcenbegrenzung pro Nutzer/Dienst
 
 ## 9.7 A07: Authentication Failures
-
-**Definition:** Fehler bei der Authentifizierung, nicht bei der Autorisierung.
+> **Definition:** Fehler bei der Authentifizierung, nicht bei der Autorisierung.
 
 Beispiele:
-
 - Brute Force und Credential Stuffing möglich
 - schwache Passwörter
 - unsichere Passwort-Resets
@@ -653,7 +608,6 @@ Beispiele:
 - Sessions werden nach Logout/Timeout nicht sauber zerstört
 
 Gegenmaßnahmen:
-
 - MFA
 - sichere Passwortpolicy
 - keine Default-Passwörter
@@ -664,18 +618,15 @@ Gegenmaßnahmen:
 - Session nach Logout/Timeout zuverlässig zerstören
 
 ## 9.8 A08: Software or Data Integrity Failures
-
-**Definition:** Fehlende Integrität von Software, Updateprozessen oder Daten.
+> **Definition:** Fehlende Integrität von Software, Updateprozessen oder Daten.
 
 Beispiele:
-
 - Libraries/Plugins aus unzuverlässigen Quellen
 - unsichere Updates ohne Signaturprüfung
 - Packages außerhalb offizieller Quellen
 - manipulierbare serialisierte Objekte
 
 Gegenmaßnahmen:
-
 - digitale Signaturen
 - SRI bei Dritt-Skripten
 - zuverlässige Repositories, z. B. npm/Maven
@@ -683,11 +634,9 @@ Gegenmaßnahmen:
 - serialisierte Objekte signieren/verschlüsseln oder Manipulation und Replay erkennen
 
 ## 9.9 A09: Security Logging and Alerting Failures
-
-**Definition:** Angriffe werden nicht erkannt oder nicht wirksam behandelt, weil Logging, Monitoring, Alerting oder Prozesse fehlen.
+> **Definition:** Angriffe werden nicht erkannt oder nicht wirksam behandelt, weil Logging, Monitoring, Alerting oder Prozesse fehlen.
 
 Beispiele:
-
 - Loginversuche oder kritische Transaktionen werden nicht geloggt
 - unklare Fehlermeldungen
 - Logs sind manipulierbar
@@ -695,7 +644,6 @@ Beispiele:
 - keine Response-Prozesse
 
 Gegenmaßnahmen:
-
 - Authentifizierungs-, Autorisierungs- und Validierungsfehler mit Kontext loggen
 - maschinenlesbares Logformat
 - Alarme bei verdächtigem Verhalten
@@ -703,11 +651,9 @@ Gegenmaßnahmen:
 - Logs gegen Manipulation schützen
 
 ## 9.10 A10: Mishandling of Exceptional Conditions
-
-**Definition:** Fehlerhafte Behandlung von Ausnahme- und Grenzsituationen verursacht Abstürze, unerwartetes Verhalten oder Sicherheitslücken.
+> **Definition:** Fehlerhafte Behandlung von Ausnahme- und Grenzsituationen verursacht Abstürze, unerwartetes Verhalten oder Sicherheitslücken.
 
 Beispiele:
-
 - fehlende Inputvalidierung
 - Fehlerbehandlung zu spät/zu grob
 - unerwartete Speicher-, Netzwerk- oder Berechtigungszustände
@@ -716,7 +662,6 @@ Beispiele:
 - zu ausführliche Fehlermeldungen und Stack Traces
 
 Gegenmaßnahmen:
-
 - „Expect the worst“
 - Fehler früh erfassen, sicher behandeln, loggen und ggf. alarmieren
 - kritische Schritte atomar ausführen
@@ -731,11 +676,9 @@ Gegenmaßnahmen:
 # 10. Cross-Site Request Forgery (CSRF)
 
 ## 10.1 Prinzip
-
 CSRF nutzt aus, dass der Browser Session-Cookies automatisch an eine Website sendet, bei der das Opfer angemeldet ist.
 
 Ablauf:
-
 1. Opfer ist bei Seite A eingeloggt.
 2. Opfer besucht Angreiferseite B.
 3. B löst versteckt einen Request an A aus, z. B. über Bild, Form oder JavaScript.
@@ -749,7 +692,6 @@ https://meinwebmailer.com/delete.php?messageID=123
 ```
 
 Mögliche Ziele:
-
 - Passwort-/E-Mail-Änderungen
 - Löschvorgänge
 - Überweisungen
@@ -761,16 +703,16 @@ Ein Angreifer kann auch POST-Requests aus einem versteckten HTML-Formular senden
 
 ## 10.3 Gegenmaßnahmen
 
-| Maßnahme | Wirkung |
-|---|---|
-| CSRF Token / Nonce | Server ordnet Nutzer ein zufälliges Token zu; Token muss mit dem Request mitgesendet werden. |
-| Token als Hidden Field | Server prüft Token im POST-Formular. |
-| Double-Submit Cookie | Token liegt in Cookie und Formular; Server prüft Gleichheit. |
-| Signed Double-Submit Cookie | Token wird zusätzlich per HMAC gegen Manipulation geschützt. |
-| SameSite Cookies | Browser schickt Session-Cookie bei Cross-Site-Szenarien eingeschränkt. |
-| Origin-/Referer-Prüfung | Server prüft, ob Request von vertrauenswürdiger Origin kommt. |
-| Re-Authentisierung/CAPTCHA | Für besonders kritische Aktionen. |
-| Logout bei Inaktivität | reduziert missbrauchbare Sessiondauer. |
+| Maßnahme                    | Wirkung                                                                                      |
+| --------------------------- | -------------------------------------------------------------------------------------------- |
+| CSRF Token / Nonce          | Server ordnet Nutzer ein zufälliges Token zu; Token muss mit dem Request mitgesendet werden. |
+| Token als Hidden Field      | Server prüft Token im POST-Formular.                                                         |
+| Double-Submit Cookie        | Token liegt in Cookie und Formular; Server prüft Gleichheit.                                 |
+| Signed Double-Submit Cookie | Token wird zusätzlich per HMAC gegen Manipulation geschützt.                                 |
+| SameSite Cookies            | Browser schickt Session-Cookie bei Cross-Site-Szenarien eingeschränkt.                       |
+| Origin-/Referer-Prüfung     | Server prüft, ob Request von vertrauenswürdiger Origin kommt.                                |
+| Re-Authentisierung/CAPTCHA  | Für besonders kritische Aktionen.                                                            |
+| Logout bei Inaktivität      | reduziert missbrauchbare Sessiondauer.                                                       |
 
 **Wichtig:** CSRF-Schutz setzt voraus, dass **XSS ausgeschlossen** ist. XSS kann sonst Tokens aus derselben Origin auslesen.
 
@@ -787,7 +729,6 @@ Ein Angreifer kann auch POST-Requests aus einem versteckten HTML-Formular senden
 | `Strict` | Cookie nur senden, wenn Aufruf von derselben Site stammt. Höchster CSRF-Schutz, aber schlechtere Usability. |
 
 Beispiel für `Strict`:
-
 - Nutzer ist bei GitHub eingeloggt.
 - Nutzer folgt von einer Blogseite einem Link zu GitHub.
 - Cookie wird wegen Cross-Site-Navigation nicht gesendet.
@@ -889,7 +830,6 @@ Prepared Statements trennen SQL-Code von Daten.
 | **Alternate Encodings** | Zeichenkodierung/Unicode/Hex zum Umgehen einfacher Filter. |
 
 ## 13.4 Gegenmaßnahmen
-
 - Prepared Statements / parameterisierte Queries
 - sichere DB-APIs
 - Allowlist-Validierung, wo möglich
@@ -908,7 +848,6 @@ Prepared Statements trennen SQL-Code von Daten.
 Browser kann nicht zuverlässig erkennen, ob Code legitimer Anwendungscode oder per XSS injiziert wurde.
 
 Mit **CSP** legt der Server fest:
-
 - welche Ressourcen geladen werden dürfen,
 - aus welchen Quellen,
 - welche Browserfunktionen eingeschränkt werden.
@@ -946,14 +885,12 @@ Content-Security-Policy: default-src 'self'
 Alle nicht speziell geregelten Ressourcen nur aus derselben Origin.
 
 Dadurch werden standardmäßig u. a. blockiert:
-
 - Inline-Scripts,
 - `eval()` und ähnliche dynamische Codeausführung,
 - `javascript:`-Links,
 - Inline Event Handler wie `onclick`.
 
 Saubere Alternative:
-
 - JavaScript in externe Dateien,
 - Event Handler via `addEventListener`.
 
@@ -995,7 +932,6 @@ Gefährliche Ausnahmen:
 ## 14.6 Nonces und Hashes
 
 ### Nonce
-
 1. Server erzeugt pro Response einen kryptographisch zufälligen, nicht vorhersagbaren Nonce.
 2. Server setzt ihn in CSP.
 3. Nur Script-Tags mit passendem Nonce werden ausgeführt.
@@ -1035,7 +971,6 @@ Upgrade-Insecure-Requests: 1
 Client signalisiert, dass sichere Kommunikation bevorzugt wird.
 
 Server kann:
-
 - von HTTP auf HTTPS umleiten,
 - HSTS aktivieren.
 
@@ -1085,7 +1020,6 @@ Sec-GPC: 1
 **Clickjacking / UI Redressing:** Angreifer legt eine angegriffene Seite unsichtbar oder überlagert in Frame/iFrame unter harmlosem Inhalt. Opfer klickt scheinbar auf etwas anderes, löst aber Aktion auf echter Seite aus.
 
 Beispiele:
-
 - One-Click-Bestellung
 - Likejacking
 - Änderung von Sicherheitseinstellungen
@@ -1128,7 +1062,6 @@ Content-Security-Policy: frame-ancestors 'self'
 Früher **Feature Policy**.
 
 Kontrolliert Browserfunktionen für Seite und eingebettete Inhalte:
-
 - Kamera
 - Mikrofon
 - Geolocation
@@ -1138,7 +1071,6 @@ Kontrolliert Browserfunktionen für Seite und eingebettete Inhalte:
 - Lautsprecher
 
 Setzung:
-
 - global per `Permissions-Policy` Response Header,
 - lokal pro iFrame via `allow`-Attribut.
 
@@ -1151,14 +1083,12 @@ Nutzen: Least Privilege für Browser-APIs und Drittinhalte.
 ## 16.1 Ausgangspunkt
 
 TLS ermöglicht Vertraulichkeit und Authentizität von HTTP-Verbindungen. Probleme entstehen trotzdem durch:
-
 - unachtsame Nutzer,
 - Zertifikatswarnungen werden ignoriert,
 - unsaubere Zertifizierungsstellen-Praxis,
 - Downgrade-Angriffe.
 
 Genannte Ansätze:
-
 - HTTP Public Key Pinning (HPKP)
 - Certificate Transparency
 - HTTP Strict Transport Security (HSTS)
@@ -1168,7 +1098,6 @@ Genannte Ansätze:
 **HSTS – HTTP Strict Transport Security** schützt gegen HTTPS-Downgrades.
 
 Angriff ohne HSTS:
-
 1. Opfer ruft Login per HTTP auf.
 2. MITM verändert Links/Redirects von HTTPS zu HTTP.
 3. Angreifer vermittelt HTTPS zum Server, aber HTTP zum Opfer.
@@ -1187,7 +1116,6 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 | `max-age=0` | HSTS deaktivieren. |
 
 Ablauf:
-
 1. Browser ruft Website zuerst über HTTPS auf.
 2. Zertifikat wird geprüft.
 3. HSTS Header wird gespeichert.
@@ -1195,7 +1123,6 @@ Ablauf:
 5. Ist Zertifikat ungültig, baut Browser keine Verbindung auf.
 
 Grenzen:
-
 - Erster Aufruf ist ohne HSTS vorher noch angreifbar.
 - Nach Ablauf des Zeitraums ebenfalls.
 - Lösung: **HSTS Preload List** im Browser.

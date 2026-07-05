@@ -11,7 +11,6 @@
 Ein **Buffer Overflow** bzw. **Buffer Overrun** liegt vor, wenn mehr Daten in einen Speicherpuffer geschrieben werden, als dieser aufnehmen kann. Nachbarbereiche werden überschrieben.
 
 Warum besonders relevant:
-
 - C und C++ erlauben direkte Speicherzugriffe über Pointer.
 - Sie erzwingen keine automatische Grenzprüfung wie etwa Java mit `ArrayIndexOutOfBoundsException`.
 - Betriebssysteme, Treiber und viele Anwendungen sind in C/C++ implementiert.
@@ -105,7 +104,6 @@ Relevanz: Rücksprung- und Sprungadressen liegen in dieser Byte-Reihenfolge im S
 Der Stack ist ein **LIFO-Speicher** (*Last In, First Out*).
 
 Er enthält unter anderem:
-
 - lokale Variablen,
 - Funktionsparameter,
 - Rücksprungadressen,
@@ -119,7 +117,6 @@ Der Stack wächst bei der betrachteten x86-Konvention Richtung **niedrigerer Adr
 Ein **Stack Frame** ist der zusammenhängende Stack-Bereich einer Funktion.
 
 Er enthält:
-
 - null oder mehr Übergabeparameter,
 - lokale Variablen,
 - den vorherigen Frame Pointer (**saved EBP**),
@@ -140,7 +137,7 @@ höhere Adressen
 +---------------------------+
 niedrigere Adressen
 ```
-
+![[Pasted image 20260705193842.png]]
 ## 4.3 EBP und ESP
 
 | Register | Verhalten |
@@ -258,7 +255,6 @@ Puffer wird überschrieben
 ```
 
 Mögliche Folgen:
-
 - Datenmanipulation,
 - Umgehung einer Sicherheitsprüfung,
 - Programmabsturz,
@@ -307,16 +303,17 @@ Beim `ret` übernimmt der Prozessor die manipulierte Adresse als nächsten Ausf�
 
 ## 8.1 Begriffe
 
-| Begriff | Bedeutung |
-|---|---|
-| **Injection Vector** | Technik, mit der gezielt ein Buffer Overflow ausgelöst wird. |
-| **Payload** | Code oder Aktion, die nach erfolgreicher Ausnutzung ausgeführt wird. |
-| **Shellcode** | Kompakter Maschinencode, der nach erfolgreicher Kontrollflussübernahme ausgeführt wird, historisch oft zum Start einer Shell. |
-| **NOP Sled / NOP-Schlitten** | Folge von `NOP`-Befehlen, um die notwendige Genauigkeit der Sprungadresse zu reduzieren. |
+| Begriff                              | Bedeutung                                                                                                                     |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Injection Vector**                 | Technik, mit der gezielt ein Buffer Overflow ausgelöst wird.                                                                  |
+| **Payload**                          | Code oder Aktion, die nach erfolgreicher Ausnutzung ausgeführt wird.                                                          |
+| **Shellcode**                        | Kompakter Maschinencode, der nach erfolgreicher Kontrollflussübernahme ausgeführt wird, historisch oft zum Start einer Shell. |
+| **NoOPeration Sled / NOP-Schlitten** | Folge von `NOP`-Befehlen, um die notwendige Genauigkeit der Sprungadresse zu reduzieren.                                      |
 
 ## 8.2 Aufbau eines klassischen Stack-Overflow-Payloads
 
 Konzeptionell:
+![[Pasted image 20260705195549.png]]
 
 ```text
 [NOP Sled][Payload][Füllbytes][überschriebene Rücksprungadresse]
@@ -347,15 +344,14 @@ for (i = 0; i <= 256; i++)
 ```
 
 Für `char buffer[256]` sind nur Indizes `0` bis `255` gültig. Der Zugriff auf `buffer[256]` überschreibt ein zusätzliches Byte.
+![[Pasted image 20260705195828.png]]
 
 Folge in Stack-Szenarien:
-
 - Niedrigstes Byte des gespeicherten Frame Pointers kann verändert werden.
 - Beim Wiederherstellen des Stack Frames kann dadurch ein kontrollierter Fake-Frame verwendet werden.
 - Das ist eine Sonderform des **Frame Pointer Overwrite**.
 
 ## 9.2 Heap Overflow
-
 Ein **Heap Overflow** überschreibt Daten in dynamisch reserviertem Speicher.
 
 Unterschied zum Stack Overflow:
@@ -366,7 +362,6 @@ Unterschied zum Stack Overflow:
 | Ziel oft Rücksprungadresse/Kontrollfluss. | Ziel oft benachbarte Daten oder Funktionszeiger. |
 
 Mögliche Folgen eines Heap Overflows:
-
 - Überschreiben benachbarter Variablen,
 - Manipulation von Längenwerten oder Berechtigungsflags,
 - Manipulation von Funktionszeigern,
@@ -391,7 +386,6 @@ Wenn Nutzerinput als Formatstring verwendet wird, können Formatparameter interp
 | `%n` | Schreibt Anzahl bereits ausgegebener Zeichen an die übergebene Adresse |
 
 Risiken:
-
 - Offenlegung von Stack-/Speicherinhalten über `%x`, `%p`, `%s`,
 - Schreiben in Speicher über `%n`,
 - potenziell Manipulation kritischer Werte/Kontrollflussdaten.
@@ -414,7 +408,6 @@ Unsichere Funktionen vermeiden:
 Wichtig bei `strncpy`: Die Funktion kann bei zu langem Quellstring ohne Nullterminierung enden. Deshalb muss die Terminierung bewusst geprüft bzw. gesetzt werden.
 
 Weitere Grundregeln:
-
 - Eingabelängen vor Verarbeitung validieren.
 - Größen und Offsets zuverlässig prüfen.
 - Bei Arrays strikt `< length`, nicht `<= length`.
@@ -437,8 +430,8 @@ Weitere Grundregeln:
 
 Diese Maßnahmen sind besonders wichtig, wenn Quellcode nicht kurzfristig geändert werden kann. Sie ersetzen keine sichere Programmierung.
 
-## 11.1 Bounds Checking
-
+## 11.1 Compiler Erweiterungen
+### 11.1.1 Bounds Checking
 Compiler- oder Laufzeitmechanismus, der Arraygrenzen überprüft.
 
 Beispiel:
@@ -449,12 +442,10 @@ gcc -fsanitize=bounds
 
 Vorteil: Fehler werden erkannt; geringer Performanceverlust laut Folien.
 
-## 11.2 Stack Canary / Security Cookie
-
+### 11.1.2 Stack Canary / Security Cookie
 Ein **Stack Canary** ist ein Prüfwert zwischen lokalen Puffern und Kontrollinformationen wie saved EIP.
 
 Ablauf:
-
 1. Funktion legt Canary im Stack Frame ab.
 2. Vor `ret` prüft Funktion, ob Canary unverändert ist.
 3. Bei Änderung wird Programm beendet bzw. Fehler ausgelöst.
@@ -462,16 +453,16 @@ Ablauf:
 Ziel: Überschreiben der Rücksprungadresse erkennen.
 
 Beispiele:
-
 - GCC StackGuard
 - Microsoft Buffer Security Check (`/GS`)
 
 Grenze: Kann bei Informationslecks oder bestimmten Fehlerarten umgangen werden; schützt nicht alle Speicherfehler.
 
+## 11.2 Wrapper
+> Wrapper für unsichere Bibliotheken
 ## 11.3 Libsafe
 
 **Libsafe** ist ein Wrapper für unsichere Bibliotheksfunktionen.
-
 - fängt Aufrufe ab,
 - bestimmt den Abstand zwischen Puffer und Rücksprungadresse,
 - begrenzt die Anzahl schreibbarer Bytes,
@@ -486,7 +477,6 @@ Grenze: Fokus auf Stack-basierte klassische Überläufe; keine vollständige all
 Ziel: Eingeschleuster Code im Stack/Heap soll nicht direkt ausgeführt werden.
 
 Grenzen/Umgehungsprinzipien:
-
 - Kontrollfluss kann weiterhin verändert werden.
 - **return-to-libc**: Sprung zu bereits vorhandenem Code einer Bibliothek.
 - **ROP – Return-Oriented Programming**: Kombination vorhandener kleiner Codefragmente (*Gadgets*) über manipulierte Rücksprungadressen.
@@ -500,7 +490,6 @@ Grenzen/Umgehungsprinzipien:
 Ziel: Angreifer soll nicht zuverlässig wissen, wo Payload, Bibliotheksfunktionen oder Gadgets liegen.
 
 Umgehungsansätze:
-
 - Informationslecks, die Adressen verraten,
 - Brute Force in begrenzten Adressräumen,
 - **Heap Spraying**: viele Speicherbereiche mit NOP Sled/Payload füllen, um Trefferwahrscheinlichkeit zu erhöhen.

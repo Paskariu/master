@@ -17,7 +17,6 @@ Der Foliensatz führt in Netzwerksicherheit ein und behandelt:
 - Schutzmaßnahmen, insbesondere Firewall, Verschlüsselung, Segmentierung und Forensik
 
 Leitfrage für jedes Schutzziel:
-
 1. Was ist geschützt?
 2. Wie wird es verletzt?
 3. Wie lässt sich die Verletzung erkennen?
@@ -43,14 +42,12 @@ Leitfrage für jedes Schutzziel:
 ## 3.1 Definition
 
 Integrität bedeutet:
-
 - Daten werden bei Übertragung nicht unautorisiert und unbemerkt verändert.
 - Es existieren Regeln, wer welche Daten wie verändern darf.
 
 ## 3.2 Verletzung der Integrität
 
 Mögliche Ursachen:
-
 - Angreifer verändert Daten auf einem Kommunikationsweg.
 - Man-in-the-Middle manipuliert Pakete.
 - Technische Probleme, etwa schwache Signale oder Übertragungsfehler.
@@ -64,7 +61,6 @@ Mögliche Ursachen:
 | **Digitale Signatur** | Erkennt Manipulation und bindet Daten an den Signaturschlüsselinhaber. |
 
 ## 3.4 Verhinderung
-
 - Unbefugten Netzzugang so weit wie möglich vermeiden.
 - Übergänge zwischen Netzen absichern, z. B. mit Firewall.
 - Kryptographische Integritätsmechanismen einsetzen: MACs, Signaturen, AEAD/TLS/IPsec.
@@ -87,15 +83,12 @@ Nicht nur Inhaltsdaten sind relevant, sondern auch **Metadaten**, z. B.:
 - Mit welchem Datenvolumen?
 
 ## 4.2 Verletzung
-
 Typische Methode:
-
 - Protokollieren und Mitschneiden von Datenverkehr (**Sniffing**).
 
 ## 4.3 Erkennung
 
 Vertraulichkeitsverletzungen sind besonders schwierig zu erkennen:
-
 - Passives Mitschneiden verändert Daten nicht.
 - Oft gibt es keine sichtbaren Spuren.
 - Schutz verlangt Kontrolle bzw. Vertrauen in die gesamte relevante Infrastruktur.
@@ -114,7 +107,6 @@ Vertraulichkeitsverletzungen sind besonders schwierig zu erkennen:
 # 5. Verfügbarkeit
 
 ## 5.1 Definition
-
 Verfügbarkeit bedeutet, dass Funktionalität und Benutzbarkeit eines Dienstes erhalten bleiben.
 
 ## 5.2 Verletzung
@@ -129,7 +121,6 @@ Verfügbarkeit bedeutet, dass Funktionalität und Benutzbarkeit eines Dienstes e
 ## 5.3 Erkennung
 
 Verfügbarkeitsprobleme sind meist offensichtlich:
-
 - Dienst reagiert nicht.
 - Hohe Latenzen.
 - Abgebrochene Verbindungen.
@@ -157,13 +148,11 @@ Verfügbarkeitsprobleme sind meist offensichtlich:
 Durchgeführte Handlungen sollen nicht glaubhaft abgestritten werden können.
 
 Beispiele:
-
 - „Ich habe diese E-Mail nicht gesendet.“
 - „Ich habe diese Bestellung nicht ausgelöst.“
 - „Mein Account wurde missbraucht.“
 
 ## 6.2 Ursachen und Angriffe
-
 - Gestohlene Zugangsdaten.
 - Malware, die im Namen des Nutzers handelt.
 - Unzureichende Protokollierung.
@@ -171,7 +160,6 @@ Beispiele:
 - Fehlende oder schwache Authentisierung.
 
 ## 6.3 Erkennung
-
 - Inkonsistenter Kontext:
   - ungewöhnlicher Ort,
   - ungewöhnliche Uhrzeit,
@@ -180,7 +168,6 @@ Beispiele:
 - Forensische Analyse von Logdaten und Beweisen.
 
 ## 6.4 Verhinderung
-
 - Digitale Signaturen.
 - Revisionssichere, manipulationsgeschützte Protokollierung.
 - Beweissicherung und Forensik.
@@ -196,19 +183,16 @@ Beispiele:
 ## 7.1 Definition
 
 Authentizität bedeutet Echtheit der Identifikation von:
-
 - **Subjekten**: z. B. Nutzer, Prozesse, Systeme.
 - **Objekten**: z. B. Daten, Zertifikate, Hardware, Services.
 
 Typische Nachweise:
-
 - Passwort
 - kryptographischer Schlüssel
 - Biometrie
 - Smartcard
 
 ## 7.2 Verletzung
-
 - Passwort wird ausgespäht.
 - Passwort wird gecrackt.
 - Token/Smartcard wird gestohlen.
@@ -216,14 +200,12 @@ Typische Nachweise:
 - Angreifer nutzt kompromittierte Credentials.
 
 ## 7.3 Erkennung
-
 - Inkonsistenter Nutzungskontext.
 - Ungewöhnliches Loginverhalten.
 - Unbekannte Geräte, Standorte oder Zugriffsmuster.
 - Mehrfache fehlgeschlagene Anmeldeversuche.
 
 ## 7.4 Verhinderung
-
 - Stärkere Verfahren verwenden.
 - Mehrere unabhängige Faktoren kombinieren (MFA).
 - Karten/Token bei Verlust sperren.
@@ -239,18 +221,15 @@ Typische Nachweise:
 Privatheit schützt personenbezogene Daten und das Recht auf informationelle Selbstbestimmung.
 
 Risiken:
-
 - unzureichend geschützte Zugriffe,
 - Weiterverkauf von Daten für Werbung,
 - umfassende Logfiles,
 - Zweckänderung bei der Datenverarbeitung.
 
 ## 8.2 Anonymität
-
 Anonymität bedeutet, dass die Identität einer Person nicht oder nicht zuverlässig feststellbar ist.
 
 ## 8.3 Pseudonymität
-
 Pseudonymität bedeutet, dass eine Ersatzidentität genutzt wird. Eine Vertrauensstelle kann die Zuordnung zur realen Identität kennen.
 
 Beispiel aus dem Foliensatz:
@@ -277,28 +256,26 @@ Schutzmaßnahmen:
 # 9. Sniffing
 
 ## 9.1 Definition
-
-**Sniffing** bedeutet, Datenverkehr zu protokollieren und zu analysieren, ohne ihn zu verändern.
+> **Sniffing** bedeutet, Datenverkehr zu protokollieren und zu analysieren, ohne ihn zu verändern.
 
 Es ist ein passiver Angriff auf die Vertraulichkeit.
 
 ## 9.2 Mögliche Abgriffspunkte
 
-| Ort | Beispiel |
-|---|---|
-| Physische Übertragungsstrecke | Kabel, Glasfaser, Funk. |
-| Layer 2 | Netzwerkkarte, Switch-Port, eigenes LAN. |
-| Switch-Management | Port Mirroring/Management-Port. |
-| Nach Spoofing | Angreifer leitet Verkehr über sich um. |
-| Router/Switch auf Route | Protokollierung entlang der Internetroute. |
-| Proxy | Zentraler Vermittler kann Inhalte sehen. |
+| Ort                           | Beispiel                                   |
+| ----------------------------- | ------------------------------------------ |
+| Physische Übertragungsstrecke | Kabel, Glasfaser, Funk.                    |
+| Layer 2                       | Netzwerkkarte, Switch-Port, eigenes LAN.   |
+| Switch-Management             | Port Mirroring/Management-Port.            |
+| Nach Spoofing                 | Angreifer leitet Verkehr über sich um.     |
+| Router/Switch auf Route       | Protokollierung entlang der Internetroute. |
+| Proxy                         | Zentraler Vermittler kann Inhalte sehen.   |
 
 ## 9.3 Werkzeug: Wireshark
 
 **Wireshark** ist ein Werkzeug zur Protokollanalyse.
 
 Eigenschaften laut Folien:
-
 - unterstützt sehr viele Protokolle,
 - zeigt Protokollschichten transparent an,
 - kann aufgezeichneten Netzwerkverkehr detailliert analysieren.
@@ -319,11 +296,9 @@ Klausurrelevanz:
 # 10. Spoofing
 
 ## 10.1 Definition
-
-**Spoofing** bedeutet, dass Angreifer Identitäts-, Adress- oder Zuordnungsinformationen fälschen.
+> **Spoofing** bedeutet, dass Angreifer Identitäts-, Adress- oder Zuordnungsinformationen fälschen.
 
 Ziele:
-
 - Verkehr umleiten,
 - sich als ein anderes System ausgeben,
 - Daten mitschneiden,
@@ -345,9 +320,9 @@ Ziele:
 # 11. ARP Spoofing
 
 ## 11.1 Grundlage
+> ARP ordnet im lokalen Netzwerk einer IP-Adresse eine MAC-Adresse zu.
 
-ARP ordnet im lokalen Netzwerk einer IP-Adresse eine MAC-Adresse zu.
-
+ARP -> Adress Resolution Protocol
 ## 11.2 Angriffsidee
 
 Der Angreifer sendet gefälschte ARP-Antworten:
@@ -358,7 +333,9 @@ Der Angreifer sendet gefälschte ARP-Antworten:
 ```
 
 Dadurch speichern Opfer und Gateway falsche Zuordnungen.
-
+![[Pasted image 20260705203830.png]]
+![[Pasted image 20260705203928.png]]
+![[Pasted image 20260705203937.png]]
 ## 11.3 Folge
 
 Der Datenverkehr läuft über den Angreifer:
@@ -368,14 +345,12 @@ Opfer <-> Angreifer <-> Gateway
 ```
 
 Mögliche Folgen:
-
 - Sniffing,
 - Manipulation,
 - Verwerfen von Paketen,
 - Man-in-the-Middle im LAN.
 
 ## 11.4 Schutz
-
 - Netzwerksegmentierung.
 - Sicher konfigurierte Switches.
 - Dynamic ARP Inspection, sofern verfügbar.
@@ -391,7 +366,6 @@ Mögliche Folgen:
 Beim IP Spoofing wird die Quelladresse eines IP-Pakets gefälscht.
 
 Anwendungen durch Angreifer:
-
 - Verschleierung.
 - Reflexions-/Amplification-Angriffe.
 - DoS/DDoS.
@@ -446,7 +420,6 @@ Die Grafiken auf Seiten 31–34 zeigen den Angriff als Race Condition:
 6. Nutzer wird auf das Angreifersystem umgeleitet.
 
 ## 13.4 Schutzideen
-
 - DNSSEC zur kryptographischen Absicherung von DNS-Antworten.
 - Sichere Resolver und aktuelle Randomisierung/Validierung.
 - Monitoring auffälliger DNS-Antworten.
@@ -457,14 +430,14 @@ Die Grafiken auf Seiten 31–34 zeigen den Angriff als Race Condition:
 
 # 14. Zusammenhang der Maßnahmen
 
-| Schutzziel | Typische Bedrohung | Erkennung | Schutz |
-|---|---|---|---|
-| Integrität | Manipulation, MITM | CRC, Hash, Signatur | Firewall, MAC/Signatur, Verschlüsselung |
-| Vertraulichkeit | Sniffing | schwer bis nicht direkt erkennbar | TLS, IPsec, sichere Netzknoten |
-| Verfügbarkeit | DoS/DDoS, Sabotage | Ausfall, Latenz, Monitoring | Ressourcen, Rate Limiting, Segmentierung, QoS |
-| Nachweisbarkeit | Abstreiten, Malware | Kontext, Forensik | Signatur, Logs, Beweissicherung |
-| Authentizität | Credential Theft, Spoofing | Kontextanomalien | MFA, Schlüssel, Smartcard, Sperrung |
-| Privacy | Tracking, Datenabfluss | Daten in fremdem Kontext | Datenschutz, Zweckbindung, Pseudonyme |
+| Schutzziel      | Typische Bedrohung         | Erkennung                         | Schutz                                        |
+| --------------- | -------------------------- | --------------------------------- | --------------------------------------------- |
+| Integrität      | Manipulation, MITM         | CRC, Hash, Signatur               | Firewall, MAC/Signatur, Verschlüsselung       |
+| Vertraulichkeit | Sniffing                   | schwer bis nicht direkt erkennbar | TLS, IPsec, sichere Netzknoten                |
+| Verfügbarkeit   | DoS/DDoS, Sabotage         | Ausfall, Latenz, Monitoring       | Ressourcen, Rate Limiting, Segmentierung, QoS |
+| Nachweisbarkeit | Abstreiten, Malware        | Kontext, Forensik                 | Signatur, Logs, Beweissicherung               |
+| Authentizität   | Credential Theft, Spoofing | Kontextanomalien                  | MFA, Schlüssel, Smartcard, Sperrung           |
+| Privacy         | Tracking, Datenabfluss     | Daten in fremdem Kontext          | Datenschutz, Zweckbindung, Pseudonyme         |
 
 ---
 

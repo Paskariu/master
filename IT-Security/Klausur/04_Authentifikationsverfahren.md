@@ -12,7 +12,6 @@
 Zum Schutz gegen Maskierung und unautorisierten Zugriff müssen sicherheitsrelevante Subjekte und Objekte eindeutig identifizierbar sein. Ein Subjekt weist seine behauptete Identität durch **Credentials** nach, z. B. Benutzername + Passwort oder Zertifikat.
 
 Für kritische Aktionen sollte eine erneute Authentifikation erfolgen, z. B.:
-
 - Installation von Software
 - Passwortänderung
 - einzelne Überweisung im Online-Banking
@@ -75,7 +74,6 @@ Passwort = Authentifizierung
 ```
 
 Typische Schwächen:
-
 - Wiederverwendung auf mehreren Diensten
 - schlechte Usability
 - Phishing
@@ -84,7 +82,6 @@ Typische Schwächen:
 - Online- und Offline-Cracking
 
 ## 3.2 Passwort-Best-Practices aus dem Foliensatz
-
 - Länge wichtiger als künstliche Komplexitätsregeln.
 - Unsichere/kompromittierte Passwörter über Deny List ablehnen.
 - Passwörter nicht zwischen Diensten wiederverwenden.
@@ -147,7 +144,6 @@ MAC_pepper(hash)
 ```
 
 Anforderungen:
-
 - Pepper geheim halten, z. B. in HSM oder getrennt von der DB.
 - Salt + Hash allein reichen nach DB-Diebstahl nicht für vollständige Offline-Prüfung.
 - Pepper-Rotation ist schwierig: Wenn Pepper ersetzt wird, müssen Nutzer sich erneut anmelden bzw. Hashes neu berechnet werden.
@@ -193,7 +189,6 @@ Entscheidend ist die Entropie: Wörter müssen zufällig gewählt werden, nicht 
 ## 3.7 Prüfung auf bekannte Passwort-Leaks
 
 Das in den Folien gezeigte Prinzip nutzt k-Anonymity:
-
 1. Passwort wird lokal im Browser gehasht.
 2. Nur die ersten fünf Hex-Zeichen des SHA-1-Hashes werden an den Dienst gesendet.
 3. Dienst liefert Hash-Suffixe passender bekannter kompromittierter Passwörter.
@@ -210,7 +205,6 @@ Der Server erhält nicht den vollständigen Passwort-Hash; bei einem nicht kompr
 Biometrie misst körperliche oder verhaltensbezogene Merkmale und vergleicht sie mit einem Referenzmuster.
 
 Beispiele:
-
 - Iris
 - Retina
 - Fingerabdruck
@@ -258,7 +252,6 @@ Sensor
 ```
 
 Vorverarbeitung kann beinhalten:
-
 - Ausrichten
 - Zuschneiden
 - Rauschunterdrückung
@@ -305,19 +298,16 @@ Biometrische Daten können kopiert, aus Fotos rekonstruiert oder von Gegenständ
 Ein **OTP** ist nur einmal bzw. in einem kurzen Zeitraum gültig.
 
 Einsatz:
-
 - wenn Passworteingabe riskant ist, etwa bei Abhören oder Phishing,
 - als zusätzlicher Faktor bei 2FA, insbesondere bei separatem Token/Smartphone.
 
 ## 5.2 Sicherheitseigenschaften
 
 OTP schützt gegen:
-
 - passives Mithören,
 - Replay-Angriffe.
 
 OTP schützt **nicht automatisch** gegen:
-
 - Man-in-the-Middle,
 - Echtzeit-Phishing,
 - einen nicht authentisierten Server.
@@ -327,7 +317,6 @@ Bei zähler- oder zeitbasierten OTPs müssen Server und Nutzergerät synchron bl
 ## 5.3 RSA SecurID
 
 Eigenschaften:
-
 - Token und Server haben synchronisierte Uhren.
 - Token erzeugt alle 30 oder 60 Sekunden neuen Code.
 - Code basiert auf:
@@ -383,31 +372,26 @@ Der Server stellt eine frische Herausforderung (**Challenge**, oft Zufallszahl).
 Frische Challenges verhindern Replay-Angriffe.
 
 ## 6.2 Symmetrische Variante
-
 - Client und Server besitzen gemeinsames Geheimnis.
 - Client beweist Kenntnis durch Verschlüsselung oder MAC über Challenge.
 - Problem: gemeinsames Geheimnis muss vertraulich bei Server und Client gespeichert werden.
 
 Risiken:
-
 - Known-Plaintext-/Wörterbuchangriffe bei schlechten Konstruktionen oder schwachen Geheimnissen.
 - Replay, wenn Zufallszahlen wiederholt werden.
 - MITM, wenn sich der Server nicht ebenfalls authentisiert.
 
 ## 6.3 Asymmetrische Variante
-
 - Server speichert Public Key des Clients.
 - Client besitzt Private Key.
 - Client signiert Challenge.
 - Server prüft Signatur mit Public Key.
 
 Vorteile:
-
 - Server muss keinen geheimen Client-Key speichern.
 - Kein Shared Secret zwischen jedem Client und Server.
 
 Anforderung:
-
 - Public Key darf nicht manipuliert werden.
 - Alternativ weist Client ein Zertifikat vor.
 
@@ -426,7 +410,6 @@ FIDO umfasst offene Standards für phishing-resistente Authentifizierung.
 | **FIDO2** | Aktueller Standardverbund aus WebAuthn und CTAP2. |
 
 ## 7.2 U2F
-
 - Hardware-Token, meist USB.
 - Kein spezieller Treiber notwendig.
 - Private Keys sind nicht auslesbar.
@@ -436,7 +419,6 @@ FIDO umfasst offene Standards für phishing-resistente Authentifizierung.
 ## 7.3 FIDO2 und WebAuthn
 
 FIDO2 umfasst:
-
 - **WebAuthn**: W3C-JavaScript-API für Erzeugung und Nutzung von Credentials.
 - **CTAP2**: Kommunikation zwischen Client und Authenticator, z. B. über USB-HID, BLE oder NFC.
 
@@ -458,7 +440,6 @@ Authenticator-Arten:
 | **Metadata Service** | Liefert Informationen über zertifizierte Tokens, Herstellerzertifikate und unterstützte Algorithmen. |
 
 ## 7.5 Sicherheitseigenschaften von FIDO2
-
 - Challenge-Response zwischen RP und Authenticator.
 - Kein Shared Secret wie bei TOTP.
 - RSA- oder ECDSA-Signaturen.
@@ -474,7 +455,6 @@ Authenticator-Arten:
 Passkeys bauen auf WebAuthn/FIDO auf.
 
 Sie adressieren Grenzen klassischer U2F-Tokens:
-
 - keine zwingenden separaten Hardware-Tokens,
 - Nutzung eines Smartphones als Roaming Authenticator,
 - Bluetooth kann räumliche Nähe zum PC nachweisen,
@@ -499,14 +479,12 @@ Rollen:
 | **RP – Relying Party / Service Provider** | Dienst, der auf Authentisierung durch IdP vertraut. |
 
 Vorteile:
-
 - weniger Passwörter,
 - zentrale starke Authentisierung,
 - besseres Nutzererlebnis,
 - zentralisierte Verwaltung und Widerruf.
 
 Risiken:
-
 - IdP wird besonders kritisches Ziel,
 - Kompromittierung/Verfügbarkeit des IdP betrifft viele Dienste,
 - IdP kann häufig Nutzungsverhalten sehen.

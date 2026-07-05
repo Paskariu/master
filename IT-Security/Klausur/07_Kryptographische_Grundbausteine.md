@@ -38,15 +38,12 @@ Chiffrat C --Entschlüsselung mit K--> Klartext M
 ## 2.2 Zentrales Problem: Schlüsselverteilung
 
 Beide Kommunikationspartner müssen denselben geheimen Schlüssel besitzen. Dieser Schlüssel muss:
-
 - sicher erzeugt,
 - sicher gespeichert,
 - sicher ausgetauscht
-
 werden.
 
 Geeignete Aufbewahrung:
-
 - passwortgeschützt,
 - in Spezialhardware,
 - z. B. in einem Hardware Security Module oder Token.
@@ -63,7 +60,6 @@ Geeignete Aufbewahrung:
 **AES – Advanced Encryption Standard** ist ein verbreitetes symmetrisches Verfahren.
 
 Schlüssellängen:
-
 - 128 Bit
 - 192 Bit
 - 256 Bit
@@ -75,7 +71,6 @@ Schlüssellängen:
 ## 3.1 Prinzip
 
 Jede Person besitzt ein Schlüsselpaar:
-
 - **Public Key:** darf veröffentlicht werden.
 - **Private Key:** muss geheim bleiben.
 
@@ -115,7 +110,6 @@ Asymmetrische Verfahren sind im Vergleich zu symmetrischen Verfahren rechenaufwe
 ## 4.1 Prinzip
 
 Hybride Verschlüsselung kombiniert die Vorteile beider Verfahren:
-
 1. Sender erzeugt zufälligen **Session Key**.
 2. Die Nachricht wird mit diesem Session Key symmetrisch verschlüsselt.
 3. Der Session Key wird mit dem Public Key des Empfängers asymmetrisch verschlüsselt.
@@ -155,17 +149,14 @@ Klartext / Nachricht M --Hashfunktion h--> Hashwert h(M)
 ```
 
 Der Hashwert heißt auch:
-
 - **Message Digest**
 - Fingerabdruck der Daten
 
 Typische Längen:
-
 - 256 Bit
 - 512 Bit
 
 Typische Verfahren:
-
 - SHA-256
 - SHA-512
 - SHA-3
@@ -191,7 +182,6 @@ Gleichheit bedeutet: Die Nachricht wurde mit hoher Wahrscheinlichkeit nicht ver�
 ## 5.4 Grenze
 
 Ein Hash allein liefert keine zuverlässige Authentizität:
-
 - Ein Angreifer kann Nachricht **und** Hash gemeinsam ersetzen.
 - Daher wird für Authentizität ein MAC oder eine digitale Signatur benötigt.
 
@@ -200,7 +190,6 @@ Ein Hash allein liefert keine zuverlässige Authentizität:
 # 6. Message Authentication Code (MAC)
 
 ## 6.1 Prinzip
-
 Ein MAC ist ein kryptographischer Prüfwert, der von Nachricht **und** gemeinsamem geheimem Schlüssel abhängt.
 
 ```text
@@ -212,12 +201,10 @@ Sender und Empfänger kennen beide denselben geheimen Schlüssel und können bei
 ## 6.2 Schutzeigenschaften
 
 Ein korrekter MAC liefert:
-
 - **Integrität:** Nachricht wurde nicht unbemerkt verändert.
 - **Authentizität:** Nachricht stammt von einer Partei, die den gemeinsamen Schlüssel kennt.
 
 Ein MAC liefert **keine Nicht-Abstreitbarkeit**:
-
 - Beide Kommunikationspartner können den MAC erzeugen.
 - Ein Dritter kann daher nicht beweisen, welche der beiden Parteien ihn erstellt hat.
 
@@ -233,7 +220,6 @@ Ein MAC liefert **keine Nicht-Abstreitbarkeit**:
 # 7. Digitale Signaturen
 
 ## 7.1 Prinzip
-
 Digitale Signaturen bilden das Prinzip der handschriftlichen Unterschrift kryptographisch nach.
 
 Grundlage ist die Asymmetrie von Public-Key-Kryptographie:
@@ -244,7 +230,6 @@ Signatur prüfen:   Public Key
 ```
 
 Ablauf:
-
 1. Sender berechnet Hash der Nachricht.
 2. Sender signiert den Hash mit seinem Private Key.
 3. Empfänger berechnet selbst den Hash der erhaltenen Nachricht.

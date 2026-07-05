@@ -7,7 +7,6 @@
 ---
 
 ## 1. Systematik von Bedrohungen und Angriffen
-
 > Systematik aus **RFC 4949**. Bedrohungen werden nach ihrer **Folge** (*threat consequence*) unterschieden.
 
 | Hauptklasse | Kerngedanke | Hauptsächlich gefährdete Schutzziele |
@@ -19,9 +18,8 @@
 
 ---
 
-## 2. Unauthorized Disclosure – unautorisierte Informationsgewinnung
-
-Ziel: Informationen ohne Berechtigung erhalten.
+## 1.2. Unauthorized Disclosure – unautorisierte Informationsgewinnung
+> Ziel: Informationen ohne Berechtigung erhalten.
 
 | Untertyp | Bedeutung | Beispiel |
 |---|---|---|
@@ -31,7 +29,6 @@ Ziel: Informationen ohne Berechtigung erhalten.
 | **Intrusion** | Schutzmechanismen werden umgangen, um Informationen oder Zugriff zu erhalten. | Physisches Eindringen, Reverse Engineering. |
 
 ### Wichtige Abgrenzung
-
 - **Interception**: Daten werden direkt mitgelesen oder abgefangen.
 - **Inference**: Informationen werden aus beobachtbaren Nebeninformationen abgeleitet.
 - **Exposure**: Information wird sichtbar, ohne dass zwingend ein aktiver Angriff auf ein System nötig ist.
@@ -39,9 +36,8 @@ Ziel: Informationen ohne Berechtigung erhalten.
 
 ---
 
-## 3. Deception – Täuschung
-
-Ziel: Ein System oder eine Person wird dazu gebracht, einer falschen Identität, einer falschen Information oder einem falschen Vorgang zu vertrauen.
+## 1.3. Deception – Täuschung
+>Ziel: Ein System oder eine Person wird dazu gebracht, einer falschen Identität, einer falschen Information oder einem falschen Vorgang zu vertrauen.
 
 | Untertyp | Bedeutung | Beispiel |
 |---|---|---|
@@ -62,14 +58,14 @@ Spoofing verletzt primär **Authentizität**. Es kann aber auch die Grundlage f�
 
 ---
 
-## 4. Disruption – Unterbrechung und Störung
+## 1.4. Disruption – Unterbrechung und Störung
 > Ziel: Verfügbarkeit oder korrekte Funktionsweise beeinträchtigen.
 
-| Untertyp | Bedeutung | Ursachen / Beispiele |
-|---|---|---|
-| **Incapacitation** | Systemkomponente wird untauglich gemacht. | Schadsoftware, physische Zerstörung, Bedienfehler, Hardware-/Softwarefehler, höhere Gewalt. |
-| **Corruption** | Funktionsweise wird durch Veränderung von Software oder Daten beeinflusst. | Tampering, Schadsoftware, Fehler, Naturereignisse. |
-| **Obstruction** | System oder Kommunikation wird behindert bzw. überlastet. | DoS, DDoS, Netzstörung. |
+| Untertyp           | Bedeutung                                                                  | Ursachen / Beispiele                                                                        |
+| ------------------ | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Incapacitation** | Systemkomponente wird untauglich gemacht.                                  | Schadsoftware, physische Zerstörung, Bedienfehler, Hardware-/Softwarefehler, höhere Gewalt. |
+| **Corruption**     | Funktionsweise wird durch Veränderung von Software oder Daten beeinflusst. | Tampering, Schadsoftware, Fehler, Naturereignisse.                                          |
+| **Obstruction**    | System oder Kommunikation wird behindert bzw. überlastet.                  | DoS, DDoS, Netzstörung.                                                                     |
 
 ### Wichtige Begriffe
 - **Malicious Logic**: Schadlogik bzw. bösartige Logik in Software.
@@ -79,31 +75,30 @@ Spoofing verletzt primär **Authentizität**. Es kann aber auch die Grundlage f�
 
 ---
 
-## 5. Usurpation – widerrechtliche Aneignung
+## 1.5. Usurpation – widerrechtliche Aneignung
+> Ziel: Systeme oder Ressourcen unbefugt für eigene Zwecke verwenden.
 
-Ziel: Systeme oder Ressourcen unbefugt für eigene Zwecke verwenden.
-
-| Untertyp | Bedeutung | Beispiel |
-|---|---|---|
-| **Misappropriation** | Unautorisierte Nutzung oder „Unterschlagung“ von Ressourcen. | Rechenleistung für Krypto-Mining, Datendiebstahl. |
-| **Misuse** | Missbrauch einer Komponente oder Überschreitung der eigenen Berechtigungen. | Admin verwendet Berechtigungen für private/illegitime Zwecke; Nutzer greift außerhalb seiner Rolle zu. |
+| Untertyp             | Bedeutung                                                                   | Beispiel                                                                                               |
+| -------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Misappropriation** | Unautorisierte Nutzung oder „Unterschlagung“ von Ressourcen.                | Rechenleistung für Krypto-Mining, Datendiebstahl.                                                      |
+| **Misuse**           | Missbrauch einer Komponente oder Überschreitung der eigenen Berechtigungen. | Admin verwendet Berechtigungen für private/illegitime Zwecke; Nutzer greift außerhalb seiner Rolle zu. |
 
 ---
 
-# 6. Bedrohungen nach Schichten
+# 2. Bedrohungen nach Schichten
 
 Die Folie ordnet Beispiele der OSI- und TCP/IP-Schichten zu.
 
-| Ebene | Protokollbeispiele | Bedrohungsbeispiele |
-|---|---|---|
-| **„Layer 8: User“** | — | Phishing, Social Engineering, Scareware, Hoax, Identitätsdiebstahl, Spam |
-| **Application Layer** | HTTP, FTP, IMAP, SMTP, POP, DNS, BGP | E-Mail-Spoofing, Session Hijacking, DNS-Amplification, BGP/IP-Hijacking, SQL Injection, XSS, Malware |
-| **Transport Layer** | TCP, UDP | SYN Flood, DDoS |
-| **Network / Internet Layer** | IP, ICMP | IP-Spoofing, Smurf Attack, IP Fragmentation Attack, Ping of Death |
-| **Data Link Layer** | Ethernet, WLAN | ARP Cache Poisoning |
-| **Physical Layer** | Kabel, Glasfaser, Funk | Abhören / physischer Zugriff, z. B. PRISM-Kontext |
+| Ebene                        | Protokollbeispiele                   | Bedrohungsbeispiele                                                                                  |
+| ---------------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| **„Layer 8: User“**          | —                                    | Phishing, Social Engineering, Scareware, Hoax, Identitätsdiebstahl, Spam                             |
+| **Application Layer**        | HTTP, FTP, IMAP, SMTP, POP, DNS, BGP | E-Mail-Spoofing, Session Hijacking, DNS-Amplification, BGP/IP-Hijacking, SQL Injection, XSS, Malware |
+| **Transport Layer**          | TCP, UDP                             | SYN Flood, DDoS                                                                                      |
+| **Network / Internet Layer** | IP, ICMP                             | IP-Spoofing, Smurf Attack, IP Fragmentation Attack, Ping of Death                                    |
+| **Data Link Layer**          | Ethernet, WLAN                       | ARP Cache Poisoning                                                                                  |
+| **Physical Layer**           | Kabel, Glasfaser, Funk               | Abhören / physischer Zugriff, z. B. PRISM-Kontext                                                    |
 
-## 6.1 Layer 8: Der Mensch
+## 2.1 Layer 8: Der Mensch
 
 Viele Sicherheitsvorfälle funktionieren nicht primär durch technische Schwachstellen, sondern durch die Manipulation von Menschen:
 
@@ -116,7 +111,7 @@ Viele Sicherheitsvorfälle funktionieren nicht primär durch technische Schwachs
 
 **Merksatz:** Der Nutzer ist kein OSI-Layer, aber praktisch oft der wirksamste Angriffsweg.
 
-## 6.2 Application Layer
+## 2.2 Application Layer
 
 | Angriff | Kurzbeschreibung |
 |---|---|
@@ -126,7 +121,7 @@ Viele Sicherheitsvorfälle funktionieren nicht primär durch technische Schwachs
 | **SQL Injection** | Manipulation von Datenbankabfragen über unsichere Eingaben. |
 | **XSS – Cross-Site Scripting** | Einschleusen von Skripten in Webseiten, die im Browser anderer Nutzer laufen. |
 
-## 6.3 Transport Layer: SYN Flood
+## 2.3 Transport Layer: SYN Flood
 
 Bei TCP wird eine Verbindung gewöhnlich über den Three-Way Handshake aufgebaut:
 
@@ -140,7 +135,7 @@ Beim **SYN Flood** sendet der Angreifer viele SYN-Pakete, beendet den Handshake 
 
 **Schutzziel:** Verfügbarkeit.
 
-## 6.4 Network Layer
+## 2.4 Network Layer
 
 | Angriff | Idee |
 |---|---|
@@ -149,12 +144,10 @@ Beim **SYN Flood** sendet der Angreifer viele SYN-Pakete, beendet den Handshake 
 | **IP Fragmentation Attack** | Missbrauch von Fragmentierung, um Filter/Firewalls zu umgehen oder fehlerhafte Verarbeitung auszulösen. |
 | **Ping of Death** | Historischer Angriff durch übergroße bzw. fehlerhaft zusammengesetzte ICMP-Pakete. |
 
-## 6.5 Data Link Layer: ARP Cache Poisoning
-
-ARP ordnet im lokalen Netzwerk IP-Adressen MAC-Adressen zu.
+## 2.5 Data Link Layer: ARP Cache Poisoning
+> ARP ordnet im lokalen Netzwerk IP-Adressen MAC-Adressen zu.
 
 **ARP Cache Poisoning**:
-
 1. Angreifer sendet gefälschte ARP-Antworten.
 2. Opfer speichert falsche IP-MAC-Zuordnung.
 3. Verkehr wird an Angreifer statt an Gateway oder Zielsystem gesendet.
@@ -164,14 +157,13 @@ Folge: häufig **Man-in-the-Middle** im LAN.
 
 ---
 
-# 7. Schadsoftware / Malware
+# 3. Schadsoftware / Malware
 
-## 7.1 Definition
+## 3.1 Definition
 
 **Malware** ist Schadsoftware, die Systeme kompromittiert, Informationen ausspäht, Funktionen stört, Zugriff ermöglicht oder sich verbreitet.
 
-## 7.2 Verbreitungswege
-
+## 3.2 Verbreitungswege
 - E-Mail-Anhänge, trotz Spam-Filter
 - Präparierte Office- oder PDF-Dokumente
 - Archive, Skripte oder ausführbare Dateien
@@ -183,29 +175,27 @@ Folge: häufig **Man-in-the-Middle** im LAN.
 - Nachladen weiterer Schadsoftware durch bereits vorhandene Malware/Bot
 
 ### Drive-by-Download
-
 Der Nutzer landet auf einer kompromittierten Website – direkt oder über Umleitung, iframe oder bösartige Werbung. Ein Exploit Kit nutzt dann Sicherheitslücken im Browser, Plug-in oder Betriebssystem aus.
 
 Der Nutzer muss die Schadsoftware nicht bewusst starten.
 
 ### Warum Signaturerkennung nicht ausreicht
-
 Malware wird häufig individualisiert oder leicht verändert. Dadurch ändern sich Dateihash, Struktur oder Signaturen, während die Schadwirkung erhalten bleibt. Rein signaturbasierte Scanner erkennen solche Varianten nicht zuverlässig.
 
 ---
 
-## 7.3 Malware-Typen
+## 3.3 Malware-Typen
 
-| Typ | Definition |
-|---|---|
-| **Virus** | Verbreitet sich durch Anhängen an ein Wirtsprogramm. Benötigt typischerweise dessen Ausführung. |
-| **Wurm** | Verbreitet sich selbstständig über Netzwerke. |
-| **Trojanisches Pferd** | Bietet vordergründig nützliche Funktionalität, enthält aber versteckte Zusatzfunktionen, z. B. Spyware. |
-| **Logische Bombe** | Schadfunktion wird beim Eintritt einer bestimmten Bedingung aktiviert. |
-| **Zeitbombe** | Sonderfall der logischen Bombe: Aktivierung zu einem bestimmten Zeitpunkt. |
-| **Hintertür / Trapdoor / Backdoor** | Ermöglicht unberechtigten Zugang zu Funktionen oder Systemen. |
-| **Spyware** | Späht Informationen aus, oft versteckt als Teil eines Trojaners. |
-| **Dropper** | Erstes Schadprogramm, das den eigentlichen Payload nachlädt. |
+| Typ                                 | Definition                                                                                              |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Virus**                           | Verbreitet sich durch Anhängen an ein Wirtsprogramm. Benötigt typischerweise dessen Ausführung.         |
+| **Wurm**                            | Verbreitet sich selbstständig über Netzwerke.                                                           |
+| **Trojanisches Pferd**              | Bietet vordergründig nützliche Funktionalität, enthält aber versteckte Zusatzfunktionen, z. B. Spyware. |
+| **Logische Bombe**                  | Schadfunktion wird beim Eintritt einer bestimmten Bedingung aktiviert.                                  |
+| **Zeitbombe**                       | Sonderfall der logischen Bombe: Aktivierung zu einem bestimmten Zeitpunkt.                              |
+| **Hintertür / Trapdoor / Backdoor** | Ermöglicht unberechtigten Zugang zu Funktionen oder Systemen.                                           |
+| **Spyware**                         | Späht Informationen aus, oft versteckt als Teil eines Trojaners.                                        |
+| **Dropper**                         | Erstes Schadprogramm, das den eigentlichen Payload nachlädt.                                            |
 
 ### Virus vs. Wurm
 
@@ -216,16 +206,14 @@ Malware wird häufig individualisiert oder leicht verändert. Dadurch ändern si
 
 ---
 
-# 8. Ransomware
+# 4. Ransomware
 
-## 8.1 Definition
-
-**Ransomware** erpresst Lösegeld, indem sie den Zugriff auf Systeme oder Daten einschränkt bzw. Daten verschlüsselt.
+## 4.1 Definition
+>**Ransomware** erpresst Lösegeld, indem sie den Zugriff auf Systeme oder Daten einschränkt bzw. Daten verschlüsselt.
 
 Ziel ist meist eine Verletzung der **Verfügbarkeit**; moderne Varianten kombinieren dies oft mit Datenabfluss und Erpressung.
 
-## 8.2 Klassische Ransomware
-
+## 4.2 Klassische Ransomware
 Klassische Varianten wie der „BKA-Trojaner“:
 
 - sperren den Bildschirm,
@@ -234,12 +222,11 @@ Klassische Varianten wie der „BKA-Trojaner“:
 - verschlüsseln die Daten oft nicht tatsächlich,
 - können häufig durch Start von Rettungssystemen oder Bereinigung entfernt werden.
 
-## 8.3 Moderne Ransomware / Krypto-Trojaner
+## 4.3 Moderne Ransomware / Krypto-Trojaner
 
 Beispiele aus den Folien: WannaCry, Locky, TeslaCrypt.
 
 Typische Eigenschaften:
-
 - Betriebssystem startet häufig weiterhin.
 - Lokale, USB- und Netzlaufwerke können verschlüsselt werden.
 - Dokumente, Fotos und viele andere Dateitypen werden betroffen.
@@ -257,7 +244,7 @@ Typische Eigenschaften:
 | Beseitigung häufig über Rettungssystem | Wiederherstellung meist über sauberes Backup nötig |
 | Erpressung durch Sperre | Erpressung durch kryptographisch erzwungene Unzugänglichkeit |
 
-## 8.4 Hybride Verschlüsselung bei Ransomware
+## 4.4 Hybride Verschlüsselung bei Ransomware
 
 Moderne Ransomware verwendet typischerweise **hybride Kryptographie**:
 
@@ -273,7 +260,7 @@ Moderne Ransomware verwendet typischerweise **hybride Kryptographie**:
 
 Bei korrekter Implementierung ist ohne zugehörigen Private Key keine Entschlüsselung möglich.
 
-## 8.5 Ransomware-Angriffsvektoren
+## 4.5 Ransomware-Angriffsvektoren
 
 - Mail-Anhänge:
   - Office-Dokumente mit Makros
@@ -288,7 +275,7 @@ Bei korrekter Implementierung ist ohne zugehörigen Private Key keine Entschlüs
   - Shop-Systeme
 - Nachladen über bereits infizierte Bots
 
-## 8.6 WannaCry und EternalBlue
+## 4.6 WannaCry und EternalBlue
 
 Die Folien nennen **EternalBlue** als Einfallstor für WannaCry.
 
@@ -296,10 +283,9 @@ Die Folien nennen **EternalBlue** als Einfallstor für WannaCry.
 - Nicht eingespielte Sicherheitsupdates erhöhen die Wahrscheinlichkeit erfolgreicher Angriffe massiv.
 - Der Fall verdeutlicht die Bedeutung von Patchmanagement und Netzwerksegmentierung.
 
-## 8.7 Auswirkungen auf Unternehmen
+## 4.7 Auswirkungen auf Unternehmen
 
 Mögliche Folgen:
-
 - Betriebsunterbrechung
 - Datenverlust
 - Reputationsverlust
@@ -307,7 +293,7 @@ Mögliche Folgen:
 - bei kritischen Infrastrukturen besonders hohe Schäden
 - bei einzelnen Unternehmen existenzgefährdend
 
-## 8.8 Begünstigende Faktoren
+## 4.8 Begünstigende Faktoren
 
 | Versäumnis | Folge |
 |---|---|
@@ -316,7 +302,7 @@ Mögliche Folgen:
 | Fehlende Netzsegmentierung, große Freigaben, schwache Admin-Passwörter | Schadsoftware kann sich weiter ausbreiten; größerer Schaden. |
 | Unzureichendes Backup-Konzept | Längerer bzw. irreversibler Datenverlust. |
 
-## 8.9 Entwicklung zu gezielten Angriffen
+## 4.9 Entwicklung zu gezielten Angriffen
 
 Ransomware kann zu gezielten Erpressungen ausgebaut werden:
 
@@ -327,7 +313,7 @@ Ransomware kann zu gezielten Erpressungen ausgebaut werden:
 
 ---
 
-# 9. Beispiel Emotet
+# 5. Beispiel Emotet
 
 Emotet war ursprünglich ein Banking-Trojaner, kann aber weitere Schadfunktionen nachladen.
 
@@ -357,7 +343,7 @@ Phishing -> Infektion -> Persistenz -> Credential Theft
 
 ---
 
-# 10. Human Factors
+# 6. Human Factors
 
 Human Factors sind menschliche Eigenschaften oder Fehler, die Angriffe ermöglichen oder erleichtern.
 
@@ -371,12 +357,11 @@ In den Folien:
 
 ---
 
-## 10.1 Spam
+## 6.1 Spam
 
 **Spam** ist massenhaft versendete, unerwünschte Nachricht, häufig mit Werbung, Betrug oder Malware-Bezug.
 
 Warum Spam trotz sehr niedriger Erfolgsrate wirtschaftlich sein kann:
-
 - Versand ist extrem günstig.
 - Reichweite ist sehr groß.
 - Schon sehr wenige erfolgreiche Abschlüsse reichen für Profit.
@@ -385,10 +370,9 @@ Die Folie illustriert: Bei hunderten Millionen Nachrichten sind selbst wenige K�
 
 ---
 
-## 10.2 Social Engineering
+## 6.2 Social Engineering
 
 ### Definition
-
 Social Engineering sind nicht- oder niedrigtechnische Angriffsmethoden, die Täuschung, Manipulation oder Betrug nutzen, um Informationssysteme anzugreifen.
 
 ### Grundprinzip
@@ -428,7 +412,7 @@ Social Engineering sind nicht- oder niedrigtechnische Angriffsmethoden, die Täu
 - URL öffnen
 - vertrauliche Systeminformationen herausgeben
 
-## 10.3 Beispiel Robin Sage
+## 6.3 Beispiel Robin Sage
 
 Robin Sage war eine künstlich geschaffene Identität in sozialen Netzwerken:
 
@@ -454,18 +438,15 @@ Solche Informationen erleichtern glaubwürdige Vorwände und die Auswahl passend
 
 ---
 
-## 10.4 Scareware
-
-**Scareware** nutzt Angst und Druck.
+## 6.4 Scareware
+> **Scareware** nutzt Angst und Druck.
 
 Typischer Ablauf:
-
 1. Programm oder Webseite meldet viele angebliche „Probleme“.
 2. Die angebliche Behebung wird nur in der kostenpflichtigen Version angeboten.
 3. Häufig betreffen die „Probleme“ harmlose Dinge, z. B. Cookies, Browser Cache oder History.
 
 Ziele:
-
 - Geldzahlung
 - Installation weiterer Malware
 - Erhalt von Zahlungsdaten
@@ -475,14 +456,12 @@ Ziele:
 
 ---
 
-# 11. Phishing und verwandte Angriffe
+# 7. Phishing und verwandte Angriffe
 
-## 11.1 Phishing
-
-**Phishing** ist ein Spezialfall eines Maskierungsangriffs.
+## 7.1 Phishing
+> **Phishing** ist ein Spezialfall eines Maskierungsangriffs.
 
 Ablauf:
-
 1. Angreifer gibt sich als legitime Organisation oder Website aus, etwa Bank oder Arbeitgeber.
 2. Opfer wird meist per gefälschter E-Mail auf eine gefälschte Seite gelockt.
 3. Opfer gibt Passwort, PIN, TAN oder andere Daten ein.
@@ -490,12 +469,10 @@ Ablauf:
 
 Problem: Nutzer können die Authentizität von E-Mails oft nicht zuverlässig beurteilen. Digitale Signaturen für Unternehmensmails sind selten.
 
-## 11.2 Pharming
-
-**Pharming** lenkt Nutzer auf eine falsche Website, obwohl sie die korrekte Adresse eingeben.
+## 7.2 Pharming
+> **Pharming** lenkt Nutzer auf eine falsche Website, obwohl sie die korrekte Adresse eingeben.
 
 Mögliche Methoden:
-
 - Eintrag in der `hosts`-Datei
 - Manipulierter DNS-Server
 - Kompromittierte Router-DNS-Einstellungen
@@ -508,27 +485,23 @@ Mögliche Methoden:
 | Opfer wird mit gefälschter Nachricht/Link gelockt. | Namensauflösung oder lokale Zuordnung wird manipuliert. |
 | Nutzer klickt meist aktiv auf Link. | Richtige URL kann eingegeben werden, trotzdem erfolgt Umleitung. |
 
-## 11.3 Spear Phishing
-
-**Spear Phishing** ist gezieltes Phishing gegen eine bestimmte Person oder Organisation.
+## 7.3 Spear Phishing
+> **Spear Phishing** ist gezieltes Phishing gegen eine bestimmte Person oder Organisation.
 
 Merkmale:
-
 - personalisierte Ansprache
 - Bezug auf reale Prozesse/Projekte
 - höhere Glaubwürdigkeit
 - höhere Erfolgswahrscheinlichkeit als Massenphishing
 
-## 11.4 Fast Flux und Proxy-Infrastruktur
-
-Angreifer nutzen kompromittierte Rechner als Proxies:
+## 7.4 Fast Flux und Proxy-Infrastruktur
+> Angreifer nutzen kompromittierte Rechner als Proxies:
 
 - die eigentliche Angreiferinfrastruktur wird verschleiert,
 - einzelne Hosts lassen sich schwer vollständig abschalten,
 - große Anzahl verteilter Proxies erhöht Ausfallsicherheit.
 
 **Fast-Flux-Botnets:**
-
 - Angreifer betreiben eigenen DNS-Server.
 - DNS liefert schnell wechselnde IP-Adressen zurück, oft Round Robin.
 - Dadurch wird die Abschaltung bösartiger Domains/Hosts erschwert.
@@ -536,16 +509,14 @@ Angreifer nutzen kompromittierte Rechner als Proxies:
 
 ---
 
-# 12. Man-in-the-Browser
+# 8. Man-in-the-Browser
 
-## 12.1 Definition
-
-**Man-in-the-Browser (MitB)** ist ein Man-in-the-Middle-Angriff innerhalb des Browsers.
+## 8.1 Definition
+> **Man-in-the-Browser (MitB)** ist ein Man-in-the-Middle-Angriff innerhalb des Browsers.
 
 Meist wird er durch Trojanische Pferde umgesetzt.
 
-## 12.2 Ablauf
-
+## 8.2 Ablauf
 1. Schadsoftware installiert Browser-Erweiterung, Skript oder Manipulationskomponente.
 2. Nutzer ruft die echte, legitime Website auf.
 3. Die Malware verändert die Originalseite **vor** der Anzeige im Browser.
@@ -553,10 +524,9 @@ Meist wird er durch Trojanische Pferde umgesetzt.
 5. Parameter werden manipuliert, z. B. Empfängerkontonummer.
 6. Antwort der echten Website wird erneut verändert, damit das Opfer keinen Verdacht schöpft.
 
-## 12.3 Warum klassische Authentisierung allein nicht genügt
+## 8.3 Warum klassische Authentisierung allein nicht genügt
 
 Für die echte Website wirken Anfragen authentisch:
-
 - gleiche IP-Adresse,
 - gleicher Browser,
 - korrekte Zugangsdaten,
@@ -565,39 +535,36 @@ Für die echte Website wirken Anfragen authentisch:
 
 Die Malware sitzt **nach** der Benutzerinteraktion, aber **vor** der Übertragung bzw. Darstellung der Daten.
 
-## 12.4 Gegenmaßnahme: unabhängiger zweiter Kanal
+## 8.4 Gegenmaßnahme: unabhängiger zweiter Kanal
 
 Ein zweiter vertrauenswürdiger Kanal kann helfen, z. B.:
-
 - SMS mit konkreten Überweisungsdaten,
 - separate Hardware-TAN-Anzeige,
 - Transaktionssignierung, bei der Empfänger und Betrag außerhalb des kompromittierten Browsers angezeigt werden.
 
 Aber auch das kann versagen, wenn zusätzlich das Smartphone kompromittiert wird:
-
 - **Man-in-the-Mobile**: Angriff auf mTAN/SMS oder mobile Freigaben.
 
 ---
 
-# 13. Gegenmaßnahmen nach Angriffstyp
+# 9. Gegenmaßnahmen nach Angriffstyp
 
-| Bedrohung | Sinnvolle Gegenmaßnahmen |
-|---|---|
-| Spam/Phishing | Mailfilter, DMARC/SPF/DKIM, Awareness, Meldewege, MFA, sichere Prozesse. |
-| Social Engineering | Schulungen, Verifikation über Rückruf/zweiten Kanal, Least Privilege, klare Freigabeprozesse. |
-| Malware/Drive-by | Patchmanagement, Browser-Hardening, EDR/AV, Application Allowlisting, Makros restriktiv behandeln. |
-| Ransomware | 3-2-1-Backups, Offline/immutable Backups, Segmentierung, Patchmanagement, MFA, EDR, Incident Response. |
-| ARP Poisoning | Netzwerksegmentierung, Dynamic ARP Inspection, sichere Switch-Konfiguration, Verschlüsselung. |
-| MitB | Transaktionssignierung, Gerätehärtung, separate Bestätigungskanäle, Browser-/Endpoint-Schutz. |
-| DDoS/SYN Flood | Rate Limiting, SYN Cookies, Load Balancing, DDoS-Schutzdienst, Kapazitätsreserven. |
-| DNS-/Pharming-ähnliche Umleitung | DNSSEC, sichere Routerkonfiguration, Monitoring, geschützte DNS-Resolver. |
+| Bedrohung                        | Sinnvolle Gegenmaßnahmen                                                                               |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Spam/Phishing                    | Mailfilter, DMARC/SPF/DKIM, Awareness, Meldewege, MFA, sichere Prozesse.                               |
+| Social Engineering               | Schulungen, Verifikation über Rückruf/zweiten Kanal, Least Privilege, klare Freigabeprozesse.          |
+| Malware/Drive-by                 | Patchmanagement, Browser-Hardening, EDR/AV, Application Allowlisting, Makros restriktiv behandeln.     |
+| Ransomware                       | 3-2-1-Backups, Offline/immutable Backups, Segmentierung, Patchmanagement, MFA, EDR, Incident Response. |
+| ARP Poisoning                    | Netzwerksegmentierung, Dynamic ARP Inspection, sichere Switch-Konfiguration, Verschlüsselung.          |
+| MitB                             | Transaktionssignierung, Gerätehärtung, separate Bestätigungskanäle, Browser-/Endpoint-Schutz.          |
+| DDoS/SYN Flood                   | Rate Limiting, SYN Cookies, Load Balancing, DDoS-Schutzdienst, Kapazitätsreserven.                     |
+| DNS-/Pharming-ähnliche Umleitung | DNSSEC, sichere Routerkonfiguration, Monitoring, geschützte DNS-Resolver.                              |
 
 ---
 
 # 14. Klausur-Checkliste
 
 Du solltest nach dem Foliensatz sicher können:
-
 1. Die vier RFC-4949-Bedrohungsklassen nennen und erklären.
 2. Exposure, Interception, Inference und Intrusion unterscheiden.
 3. Masquerade, Falsification und Repudiation erklären.
@@ -618,6 +585,5 @@ Du solltest nach dem Foliensatz sicher können:
 ---
 
 ## Quellenbasis
-
 - Foliensatz **„IT-Sicherheit 1 – Spezielle Bedrohungen“**, Prof. Dr. Tobias Straub, DHBW Stuttgart.
 - Enthaltene Themen: RFC-4949-Bedrohungssystematik, Netzwerkangriffe, Malware, Ransomware, Emotet, Social Engineering, Scareware, Phishing, Pharming und Man-in-the-Browser.
